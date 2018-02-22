@@ -17,6 +17,7 @@ Plug 'ervandew/supertab'
 Plug 'scrooloose/syntastic'
 Plug 'valloric/youcompleteme'
 Plug 'mattn/emmet-vim'
+Plug 'scrooloose/nerdcommenter'
 call plug#end()
 
 syntax on
@@ -54,8 +55,8 @@ set undofile
 set undodir=~/.config/nvim/undodir
 
 " Remap leader key to space
-let mapleader = "\<space>"
-:set timeout timeoutlen=100
+let mapleader = "\<Space>"
+":set timeout timeoutlen=100
 
 " Remap jk to save and exit insert mode
 :imap jk <Esc>:w<CR>
