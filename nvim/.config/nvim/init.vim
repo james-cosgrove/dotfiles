@@ -18,6 +18,7 @@ Plug 'scrooloose/syntastic'
 Plug 'valloric/youcompleteme'
 Plug 'mattn/emmet-vim'
 Plug 'scrooloose/nerdcommenter'
+Plug 'ap/vim-css-color'
 call plug#end()
 
 syntax on
