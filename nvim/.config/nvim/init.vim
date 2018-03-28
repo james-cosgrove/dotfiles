@@ -84,6 +84,11 @@ endif
 " ripgrep settings
 let g:rg_highlight = "true"
 
+" Snippets
+nnoremap <leader>mt o@include respond-to(tablet) {<CR>}<Esc>O
+nnoremap <leader>mn o@include respond-to(netbook) {<CR>}<Esc>O
+nnoremap <leader>md o@include respond-to(desktop) {<CR>}<Esc>O
+nnoremap <leader>l oconsole.log()<Esc>F(a
 set wildignore+=*/tmp/*,*/node_modules/*,*.so,*.swp,*.zip
 au FileType typescript setl sw=4 sts=4 et
 
