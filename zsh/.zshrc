@@ -84,7 +84,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
-# 
+#
 # Headers and  Logging
 
 e_header() { printf "\n${bold}${purple}==========  %s  ==========${reset}\n\n" "$@"
@@ -152,12 +152,18 @@ alias weather='curl wttr.in/Melbourne'
 
 # Set Colors
 
-bold=$(tput bold)
-underline=$(tput sgr 0 1)
-reset=$(tput sgr0)
-purple=$(tput setaf 171)
-red=$(tput setaf 1)
-green=$(tput setaf 76)
-tan=$(tput setaf 3)
-blue=$(tput setaf 38)
+#bold=$(tput bold)
+#underline=$(tput sgr 0 1)
+#reset=$(tput sgr0)
+#purple=$(tput setaf 171)
+#red=$(tput setaf 1)
+#green=$(tput setaf 76)
+#tan=$(tput setaf 3)
+#blue=$(tput setaf 38)
 
+# chruby config
+source /usr/local/opt/chruby/share/chruby/chruby.sh
+source /usr/local/opt/chruby/share/chruby/auto.sh
+
+BASE16_SHELL=$HOME/.config/base16-shell/
+[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"

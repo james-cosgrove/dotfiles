@@ -5,7 +5,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree'
 "Plug 'rstacruz/sparkup'
-"Plug 'chriskempson/base16-vim'
+Plug 'chriskempson/base16-vim'
 "Plug 'digitaltoad/vim-pug'
 Plug 'isRuslan/vim-es6'
 Plug 'leafgarland/typescript-vim'
@@ -23,7 +23,6 @@ call plug#end()
 
 syntax on
 filetype plugin indent on
-:colorscheme tomorrow-night-eighties
 :set nocompatible
 :set cursorline
 :set expandtab
@@ -40,6 +39,11 @@ filetype plugin indent on
 :set smartindent
 "let g:hardtime_default_on = 1
 let NERDTreeShowLineNumbers = 1
+
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
 
 " Omnicomplete stuff
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -84,6 +88,9 @@ endif
 " ripgrep settings
 let g:rg_highlight = "true"
 
+" Open ripgrep results in new tab
+autocmd FileType qf nnoremap <buffer> <Enter> <C-W><Enter><C-W>T
+
 " Snippets
 nnoremap <leader>mt o@include respond-to(tablet) {<CR>}<Esc>O
 nnoremap <leader>mn o@include respond-to(netbook) {<CR>}<Esc>O
@@ -114,9 +121,12 @@ augroup END
 autocmd BufWritePre * %s/\s\+$//e
 
 " Fugitive
-
 set diffopt+=vertical
 
 " Default window size for NERDTree
-
 :let g:NERDTreeWinSize=40
+
+" Remap change tab commands
+nnoremap <C-h> :tabprevious<CR>
+nnoremap <C-l> :tabnext<CR>
+
