@@ -124,9 +124,11 @@ autocmd BufWritePre * %s/\s\+$//e
 set diffopt+=vertical
 
 " Default window size for NERDTree
-:let g:NERDTreeWinSize=40
+let g:NERDTreeWinSize=40
 
 " Remap change tab commands
 nnoremap <C-h> :tabprevious<CR>
 nnoremap <C-l> :tabnext<CR>
 
+" Use PHP syntax highlighting for squarespace templates
+autocmd BufNewFile,BufRead *.list,*.item,*.block set syntax=php
