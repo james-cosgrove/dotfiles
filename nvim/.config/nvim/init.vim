@@ -88,8 +88,11 @@ endif
 " ripgrep settings
 let g:rg_highlight = "true"
 
+" set fugutive window height
+set previewheight=30
+
 " Open ripgrep results in new tab
-autocmd FileType qf nnoremap <buffer> <Enter> <C-W><Enter><C-W>T
+autocmd FileType qf nnoremap <buffer> <C-T> <C-W><Enter><C-W>T
 
 " Snippets
 nnoremap <leader>mt o@include respond-to(tablet) {<CR>}<Esc>O
@@ -132,3 +135,8 @@ nnoremap <C-l> :tabnext<CR>
 
 " Use PHP syntax highlighting for squarespace templates
 autocmd BufNewFile,BufRead *.list,*.item,*.block set syntax=php
+
+hi clear SpellBad
+hi SpellBad cterm=underline
+hi clear SpellCap
+hi SpellCap cterm=underline
