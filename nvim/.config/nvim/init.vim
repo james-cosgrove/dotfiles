@@ -137,6 +137,7 @@ nnoremap <C-l> :tabnext<CR>
 " Use PHP syntax highlighting for squarespace templates
 autocmd BufNewFile,BufRead *.list,*.item,*.block set syntax=php
 
+" Override error highlighting to underlines
 hi clear SpellBad
 hi SpellBad cterm=underline
 hi clear SpellCap
