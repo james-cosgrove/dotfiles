@@ -18,7 +18,8 @@ Plug 'scrooloose/syntastic'
 Plug 'valloric/youcompleteme'
 Plug 'mattn/emmet-vim'
 Plug 'scrooloose/nerdcommenter'
-Plug 'ap/vim-css-color'
+Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
 syntax on
@@ -132,3 +133,6 @@ nnoremap <C-l> :tabnext<CR>
 
 " Use PHP syntax highlighting for squarespace templates
 autocmd BufNewFile,BufRead *.list,*.item,*.block set syntax=php
+
+" Airline theme
+let g:airline#extensions#tabline#enabled = 1
