@@ -18,7 +18,8 @@ Plug 'scrooloose/syntastic'
 Plug 'valloric/youcompleteme'
 Plug 'mattn/emmet-vim'
 Plug 'scrooloose/nerdcommenter'
-Plug 'ap/vim-css-color'
+Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
 syntax on
@@ -140,3 +141,6 @@ hi clear SpellBad
 hi SpellBad cterm=underline
 hi clear SpellCap
 hi SpellCap cterm=underline
+
+" Airline theme
+let g:airline#extensions#tabline#enabled = 1
