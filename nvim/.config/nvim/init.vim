@@ -41,10 +41,7 @@ filetype plugin indent on
 "let g:hardtime_default_on = 1
 let NERDTreeShowLineNumbers = 1
 
-if filereadable(expand("~/.vimrc_background"))
-  let base16colorspace=256
-  source ~/.vimrc_background
-endif
+let base16colorspace=256
 
 " Omnicomplete stuff
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -142,6 +139,3 @@ hi clear SpellBad
 hi SpellBad cterm=underline
 hi clear SpellCap
 hi SpellCap cterm=underline
-
-" Airline theme
-let g:airline#extensions#tabline#enabled = 1
