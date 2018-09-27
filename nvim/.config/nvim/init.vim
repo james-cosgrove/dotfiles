@@ -86,6 +86,13 @@ if executable('rg')
   let g:ctrlp_use_caching = 0
 endif
 
+" Map ESC to clear search highlighting
+map <esc> :noh<cr>
+
+" Search smart case
+set ignorecase
+set smartcase
+
 " ripgrep settings
 let g:rg_highlight = "true"
 
@@ -142,6 +149,17 @@ hi clear SpellBad
 hi SpellBad cterm=underline
 hi clear SpellCap
 hi SpellCap cterm=underline
+
+" TSX Highlighting
+" light blue
+hi tsxTagName guifg=#59ACE5
+" dark blue
+hi tsxCloseString guifg=#2974a1
+hi tsxCloseTag guifg=#2974a1
+hi tsxAttributeBraces guifg=#2974a1
+hi tsxEqual guifg=#2974a1
+" green
+hi tsxAttrib guifg=#1BD1C1
 
 "Airline colour theme
 let g:airline_theme='base16_eighties'
