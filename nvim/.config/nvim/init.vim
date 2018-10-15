@@ -20,6 +20,7 @@ Plug 'mattn/emmet-vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'terryma/vim-multiple-cursors'
 call plug#end()
 
 syntax on
@@ -163,3 +164,6 @@ hi tsxAttrib guifg=#1BD1C1
 
 "Airline colour theme
 let g:airline_theme='base16_eighties'
+
+"Multi cursor remapping
+let g:multi_cursor_prev_key = '<C-b>'
