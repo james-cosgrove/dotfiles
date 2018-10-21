@@ -136,6 +136,8 @@ printCurrentBranch(){
 	fi
 }
 
+# Aliases
+
 alias branch-name="git rev-parse --abbrev-ref HEAD"
 alias ss="git status -s"                                                                    # Display shorthand git status
 alias s="branch && git status -s"                                                  					# Display shorthand git status with amaing lolcat
@@ -157,7 +159,7 @@ alias gacm="git add -A .; e_success 'Files added to be committed'; git commit -m
 alias glog="git log --oneline"	                                                     				# View short git log
 alias reset='bundle exec rake db:migrate:reset && bundle exec rake seed:migrate'
 alias s='rails s -b 0.0.0.0 -p 3000'
-alias timesheet='git log --author="james"'
+alias timesheet='git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset' --date=short'
 alias weather='curl wttr.in/Melbourne'
 
 # Set Colors
