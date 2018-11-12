@@ -4,6 +4,7 @@ Plug 'kien/ctrlp.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree'
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 "Plug 'rstacruz/sparkup'
 Plug 'chriskempson/base16-vim'
 "Plug 'digitaltoad/vim-pug'
@@ -14,7 +15,8 @@ Plug 'takac/vim-hardtime'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'jiangmiao/auto-pairs'
 Plug 'ervandew/supertab'
-Plug 'scrooloose/syntastic'
+Plug 'w0rp/ale'
+Plug 'Quramy/tsuquyomi'
 Plug 'valloric/youcompleteme'
 Plug 'mattn/emmet-vim'
 Plug 'scrooloose/nerdcommenter'
@@ -50,8 +52,8 @@ endif
 " Omnicomplete stuff
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd BufNewFile,BufRead *.scss             set ft=scss.css
-
 :set completeopt+=noselect,menu,preview
+
 " let enter be used to select item
 :inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
@@ -151,6 +153,17 @@ hi SpellBad cterm=underline
 hi clear SpellCap
 hi SpellCap cterm=underline
 
+"Airline colour theme
+let g:airline_theme='base16_eighties'
+
+"Multi cursor remapping
+let g:multi_cursor_prev_key = '<C-b>'
+
+
+" JS/TS Stuff
+" TS indentation
+au FileType typescript setl sw=2 sts=2 et
+
 " TSX Highlighting
 " light blue
 hi tsxTagName guifg=#59ACE5
@@ -162,8 +175,26 @@ hi tsxEqual guifg=#2974a1
 " green
 hi tsxAttrib guifg=#1BD1C1
 
-"Airline colour theme
-let g:airline_theme='base16_eighties'
 
-"Multi cursor remapping
-let g:multi_cursor_prev_key = '<C-b>'
+" Ale Fixers
+let g:ale_fixers = {
+\   'typescript': ['prettier', 'tslint'],
+\   'scss'      : ['stylelint']
+\}
+
+nmap <silent> <C-k> <Plug>(ale_previous)
+nmap <silent> <C-j> <Plug>(ale_next)
+let g:ale_typescript_tslint_use_global = 0
+let g:ale_typescript_tslint_config_path = './tslint.json'
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_enter = 0
+let g:ale_lint_on_save = 1
+let g:ale_fix_on_save = 1
+"highlight ALEError ctermbg=Red
+"highlight ALEError ctermfg=Black
+
+" Ycm Error Fixing
+nmap <leader>f :YcmCompleter FixIt<CR>
+"highlight YcmErrorSection ctermbg=Red
+"highlight YcmErrorSection ctermfg=Black
+

@@ -159,7 +159,7 @@ alias gacm="git add -A .; e_success 'Files added to be committed'; git commit -m
 alias glog="git log --oneline"	                                                     				# View short git log
 alias reset='bundle exec rake db:migrate:reset && bundle exec rake seed:migrate'
 alias s='rails s -b 0.0.0.0 -p 3000'
-alias timesheet='git log --graph --pretty="%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset" --date=short'
+alias timesheet="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset' --date=short --all --author=james"
 alias weather='curl wttr.in/Melbourne'
 
 # Set Colors
