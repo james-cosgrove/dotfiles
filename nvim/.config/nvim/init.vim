@@ -100,11 +100,17 @@ set smartcase
 " ripgrep settings
 let g:rg_highlight = "true"
 
+" Split settings
+set splitright
+
 " set fugutive window height
 set previewheight=30
 
 " Open ripgrep results in new tab
 autocmd FileType qf nnoremap <buffer> <C-T> <C-W><Enter><C-W>T
+
+" Open ripgrep results in vertical split
+autocmd FileType qf nnoremap <buffer> <C-V> <C-W><Enter><C-W>L
 
 " Snippets
 nnoremap <leader>mt o@include respond-to(tablet) {<CR>}<Esc>O
