@@ -156,10 +156,10 @@ alias b=printCurrentBranch                                                      
 alias commit="git commit -m"                                                                # Shorthand for commiting
 alias gadd="git add -A .; e_success 'Files added to be committed'"                          # Stage files
 alias gacm="git add -A .; e_success 'Files added to be committed'; git commit -m"           # Stage files then commit them with message
-alias glog="git log --oneline"	                                                     				# View short git log
 alias reset='bundle exec rake db:migrate:reset && bundle exec rake seed:migrate'
 alias s='rails s -b 0.0.0.0 -p 3000'
-alias timesheet="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset' --date=format:'%a %Y-%m-%d %H:%M:%S' --all --author=james"
+alias timesheet="git log --pretty='%C(bold blue)<%an>%Creset %Cgreen(%ad) %Cred%h%Creset -%C(auto)%d%Creset %s' --date=format:'%a %d-%m-%Y %H:%M:%S' --author=james"
+alias glog="git log --pretty='%C(bold blue)<%an>%Creset %Cgreen(%ad) %Cred%h%Creset -%C(auto)%d%Creset %s' --date=format:'%a %d-%m-%Y %H:%M:%S'"
 alias weather='curl wttr.in/Melbourne'
 
 # Set Colors
