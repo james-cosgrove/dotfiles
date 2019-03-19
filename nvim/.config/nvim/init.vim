@@ -1,14 +1,11 @@
 call plug#begin('~/.config/vim/plugged')
-Plug 'jremmen/vim-ripgrep'
-Plug 'kien/ctrlp.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
+Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
-Plug 'Shougo/vimproc.vim', {'do' : 'make'}
-"Plug 'rstacruz/sparkup'
+Plug 'shougo/vimproc.vim', {'do' : 'make'}
 Plug 'chriskempson/base16-vim'
-"Plug 'digitaltoad/vim-pug'
-Plug 'isRuslan/vim-es6'
+Plug 'isruslan/vim-es6'
 Plug 'leafgarland/typescript-vim'
 Plug 'tpope/vim-rails'
 Plug 'takac/vim-hardtime'
@@ -16,14 +13,13 @@ Plug 'hail2u/vim-css3-syntax'
 Plug 'jiangmiao/auto-pairs'
 Plug 'ervandew/supertab'
 Plug 'w0rp/ale'
-Plug 'Quramy/tsuquyomi'
-Plug 'valloric/youcompleteme'
 Plug 'mattn/emmet-vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'terryma/vim-multiple-cursors'
 Plug 'vim-scripts/loremipsum'
+Plug 'brooth/far.vim'
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 call plug#end()
 
 syntax on
@@ -83,12 +79,9 @@ autocmd BufNewFile,BufRead *.scss :set ft=scss.css
 nnoremap <leader>; 02Wdv$i
 nnoremap <leader>s vi{:sort<CR>
 
-" Ctrl+P setup.
-if executable('rg')
-  set grepprg=rg\ --color=never
-  let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
-  let g:ctrlp_use_caching = 0
-endif
+" Remap Ctrl-p to fzf
+nnoremap <C-p> :Files<Cr>
+set rtp+=/usr/local/opt/fzf
 
 " Map ESC to clear search highlighting
 map <esc> :noh<cr>

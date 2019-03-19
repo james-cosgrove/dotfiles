@@ -65,6 +65,10 @@ plugins=(git, zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
+# Make fzf use Ripgrep
+export FZF_DEFAULT_COMMAND='rg --files --follow'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -181,3 +185,6 @@ BASE16_SHELL=$HOME/.config/base16-shell/
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 export PATH="/usr/local/opt/node@8/bin:$PATH"
 export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
+export PATH="/usr/local/opt/libiconv/bin:$PATH"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
