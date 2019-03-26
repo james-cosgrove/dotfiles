@@ -34,7 +34,6 @@ filetype plugin indent on
 :set shiftwidth=2
 :set synmaxcol=300
 :set tabstop=2
-:set omnifunc=csscomplete#CompleteCSS
 :set autoindent
 :set smartindent
 "let g:hardtime_default_on = 1
@@ -44,11 +43,6 @@ if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
   source ~/.vimrc_background
 endif
-
-" Omnicomplete stuff
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd BufNewFile,BufRead *.scss             set ft=scss.css
-:set completeopt+=noselect,menu,preview
 
 " let enter be used to select item
 :inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
@@ -313,3 +307,4 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
