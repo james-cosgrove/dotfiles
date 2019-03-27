@@ -19,6 +19,10 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/loremipsum'
 Plug 'brooth/far.vim'
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+Plug 'tpope/vim-dispatch'
+Plug 'radenling/vim-dispatch-neovim'
+Plug 'sheerun/vim-polyglot'
+Plug 'shmargum/vim-sass-colors'
 call plug#end()
 
 syntax on
@@ -161,18 +165,6 @@ nnoremap <C-b> :e#<CR>
 " JS/TS Stuff
 " TS indentation
 au FileType typescript setl sw=2 sts=2 et
-
-" TSX Highlighting
-" light blue
-hi tsxTagName guifg=#59ACE5
-" dark blue
-hi tsxCloseString guifg=#2974a1
-hi tsxCloseTag guifg=#2974a1
-hi tsxAttributeBraces guifg=#2974a1
-hi tsxEqual guifg=#2974a1
-" green
-hi tsxAttrib guifg=#1BD1C1
-
 
 " Ale Fixers
 let g:ale_fixers = {
