@@ -10,7 +10,6 @@ Plug 'leafgarland/typescript-vim'
 Plug 'tpope/vim-rails'
 Plug 'takac/vim-hardtime'
 Plug 'hail2u/vim-css3-syntax'
-Plug 'jiangmiao/auto-pairs'
 Plug 'w0rp/ale'
 Plug 'mattn/emmet-vim'
 Plug 'scrooloose/nerdcommenter'
@@ -22,7 +21,6 @@ Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 Plug 'tpope/vim-dispatch'
 Plug 'radenling/vim-dispatch-neovim'
 Plug 'sheerun/vim-polyglot'
-Plug 'shmargum/vim-sass-colors'
 call plug#end()
 
 syntax on
