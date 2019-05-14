@@ -12,7 +12,7 @@ Plug 'takac/vim-hardtime'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'w0rp/ale'
 Plug 'mattn/emmet-vim'
-Plug 'scrooloose/nerdcommenter'
+Plug 'tpope/vim-commentary'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/loremipsum'
@@ -75,11 +75,11 @@ nnoremap <leader>; 02Wdv$i
 nnoremap <leader>s vi{:sort<CR>
 
 " Remap Ctrl-p to fzf
-nnoremap <C-p> :Files<Cr>
+nnoremap <C-p> :Files<CR>
 set rtp+=/usr/local/opt/fzf
 
 " Map ESC to clear search highlighting
-map <esc> :noh<cr>
+map <esc> :noh<CR>
 
 " Search smart case
 set ignorecase
@@ -88,10 +88,17 @@ set smartcase
 " ripgrep settings
 let g:rg_highlight = "true"
 
-" Split settings
+" Always open splits to right
 set splitright
 
-" set fugutive window height
+" Split resizing
+" Shortcut for small increments
+nnoremap <Leader>iw <C-w>20><CR>
+nnoremap <Leader>dw <C-w>20<<CR>
+nnoremap <Leader>ih <C-w>20+<CR>
+nnoremap <Leader>dh <C-w>20-<CR>
+
+" Set fugutive window height
 set previewheight=30
 
 " Open ripgrep results in new tab
