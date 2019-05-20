@@ -72,7 +72,7 @@ let g:python3_host_prog = '/usr/local/bin/python3'
 " CSS Stuff
 autocmd BufNewFile,BufRead *.scss :set ft=scss.css
 nnoremap <leader>; 02Wdv$i
-nnoremap <leader>s vi{:sort<CR>
+nnoremap <leader>S vi{:sort<CR>
 
 " Remap Ctrl-p to fzf
 nnoremap <C-p> :Files<CR>
@@ -106,6 +106,9 @@ autocmd FileType qf nnoremap <buffer> <C-T> <C-W><Enter><C-W>T
 
 " Open ripgrep results in vertical split
 autocmd FileType qf nnoremap <buffer> <C-V> <C-W><Enter><C-W>L
+
+" Far use ripgrep
+let g:far#source="rgnvim"
 
 " Snippets
 nnoremap <leader>mt o@include respond-to(tablet) {<CR>}<Esc>O
