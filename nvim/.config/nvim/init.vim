@@ -115,8 +115,8 @@ nnoremap <leader>mt o@include respond-to(tablet) {<CR>}<Esc>O
 nnoremap <leader>mn o@include respond-to(netbook) {<CR>}<Esc>O
 nnoremap <leader>md o@include respond-to(desktop) {<CR>}<Esc>O
 nnoremap <leader>l oconsole.log()<Esc>F(a
+
 set wildignore+=*/tmp/*,*/node_modules/*,*.so,*.swp,*.zip
-au FileType typescript setl sw=4 sts=4 et
 
 " NerdTree
 nnoremap <leader>n :NERDTree ~/Sites<CR>
@@ -275,7 +275,6 @@ command! -nargs=0 Format :call CocAction('format')
 " Use `:Fold` for fold current buffer
 command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 
-
 " Add diagnostic info for https://github.com/itchyny/lightline.vim
 let g:lightline = {
       \ 'colorscheme': 'wombat',
@@ -287,8 +286,6 @@ let g:lightline = {
       \   'cocstatus': 'coc#status'
       \ },
       \ }
-
-
 
 " Using CocList
 " Show all diagnostics
