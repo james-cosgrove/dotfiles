@@ -95,8 +95,8 @@ set splitright
 " Shortcut for small increments
 nnoremap <Leader>iw <C-w>20><CR>
 nnoremap <Leader>dw <C-w>20<<CR>
-nnoremap <Leader>ih <C-w>20+<CR>
-nnoremap <Leader>dh <C-w>20-<CR>
+nnoremap <Leader>ih <C-w>10+<CR>
+nnoremap <Leader>dh <C-w>10-<CR>
 
 " Set fugutive window height
 set previewheight=30
