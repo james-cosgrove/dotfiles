@@ -5,11 +5,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'shougo/vimproc.vim', {'do' : 'make'}
 Plug 'chriskempson/base16-vim'
-Plug 'isruslan/vim-es6'
-Plug 'leafgarland/typescript-vim'
 Plug 'tpope/vim-rails'
 Plug 'takac/vim-hardtime'
-Plug 'hail2u/vim-css3-syntax'
 Plug 'w0rp/ale'
 Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-commentary'
@@ -80,6 +77,9 @@ set rtp+=/usr/local/opt/fzf
 
 " Map ESC to clear search highlighting
 map <esc> :noh<CR>
+
+" Emmet VIM
+let g:user_emmet_leader_key='<C-e>'
 
 " Search smart case
 set ignorecase
