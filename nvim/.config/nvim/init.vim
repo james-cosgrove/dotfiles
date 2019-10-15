@@ -18,6 +18,7 @@ Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 Plug 'tpope/vim-dispatch'
 Plug 'radenling/vim-dispatch-neovim'
 Plug 'sheerun/vim-polyglot'
+Plug 'tpope/vim-unimpaired'
 call plug#end()
 
 syntax on
@@ -35,8 +36,12 @@ filetype plugin indent on
 :set tabstop=2
 :set autoindent
 :set smartindent
-"let g:hardtime_default_on = 1
+let g:hardtime_default_on = 1
 let NERDTreeShowLineNumbers = 1
+
+if has("termguicolors")
+  set termguicolors
+endif
 
 if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
@@ -86,7 +91,7 @@ set ignorecase
 set smartcase
 
 " ripgrep settings
-let g:rg_highlight = "true"
+let g:rg_highlight="true"
 
 " Always open splits to right
 set splitright
@@ -305,3 +310,5 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
+" Enable mousewheel
+set mouse=a
