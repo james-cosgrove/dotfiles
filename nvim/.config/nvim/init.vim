@@ -36,7 +36,7 @@ filetype plugin indent on
 :set tabstop=2
 :set autoindent
 :set smartindent
-let g:hardtime_default_on = 1
+" let g:hardtime_default_on = 1
 let NERDTreeShowLineNumbers = 1
 
 if has("termguicolors")
