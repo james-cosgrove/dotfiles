@@ -176,6 +176,7 @@ au FileType typescript setl sw=2 sts=2 et
 " Ale Fixers
 let g:ale_fixers = {
 \   'typescript': ['prettier', 'tslint'],
+\   'javascript': ['prettier', 'eslint'],
 \   'scss'      : ['stylelint']
 \}
 
