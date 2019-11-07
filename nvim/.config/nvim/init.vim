@@ -176,9 +176,9 @@ au FileType typescript setl sw=2 sts=2 et
 " Ale Fixers
 let g:ale_fixers = {
 \   'typescript': ['prettier', 'tslint'],
-\   'javascript': ['prettier', 'eslint'],
-\   'scss'      : ['stylelint']
+\   'javascript': ['prettier', 'eslint']
 \}
+" \   'scss'      : ['stylelint']
 
 nmap <silent> <C-k> <Plug>(ale_previous)
 nmap <silent> <C-j> <Plug>(ale_next)
@@ -310,6 +310,3 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
-
-" Enable mousewheel
-set mouse=a

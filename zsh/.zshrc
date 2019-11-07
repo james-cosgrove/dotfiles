@@ -194,3 +194,4 @@ export PATH=/usr/local/bin:$PATH
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export PATH="/usr/local/opt/imagemagick@6/bin:$PATH"
+
