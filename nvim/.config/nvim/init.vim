@@ -142,7 +142,14 @@ augroup numbertoggle autocmd!
 augroup END
 
 " Remove trailing whitespace on save
-autocmd BufWritePre * %s/\s\+$//e
+function! <SID>StripTrailingWhitespaces()
+	let l = line(".")
+	let c = col(".")
+	%s/\s\+$//e
+	call cursor(l, c)
+endfun
+
+autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
 " Fugitive
 set diffopt+=vertical
@@ -175,10 +182,9 @@ au FileType typescript setl sw=2 sts=2 et
 
 " Ale Fixers
 let g:ale_fixers = {
-\   'typescript': ['prettier', 'tslint'],
-\   'javascript': ['prettier', 'eslint']
+\   'javascript': ['prettier', 'eslint'],
+\   'scss'      : ['stylelint']
 \}
-" \   'scss'      : ['stylelint']
 
 nmap <silent> <C-k> <Plug>(ale_previous)
 nmap <silent> <C-j> <Plug>(ale_next)
@@ -310,3 +316,6 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+" Enable mousewheel
+set mouse=a
