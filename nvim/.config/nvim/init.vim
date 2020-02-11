@@ -19,6 +19,8 @@ Plug 'tpope/vim-dispatch'
 Plug 'radenling/vim-dispatch-neovim'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-unimpaired'
+Plug 'Chiel92/vim-autoformat'
+Plug 'elzr/vim-json'
 call plug#end()
 
 syntax on
@@ -121,6 +123,10 @@ nnoremap <leader>mn o@include respond-to(netbook) {<CR>}<Esc>O
 nnoremap <leader>md o@include respond-to(desktop) {<CR>}<Esc>O
 nnoremap <leader>l oconsole.log()<Esc>F(a
 
+inoremap {<CR> {<CR>}<ESC>O
+inoremap (<CR> (<CR>)<ESC>O
+inoremap [<CR> [<CR>]<ESC>O
+
 set wildignore+=*/tmp/*,*/node_modules/*,*.so,*.swp,*.zip
 
 " NerdTree
@@ -161,6 +167,9 @@ let g:NERDTreeWinSize=40
 nnoremap <C-h> :tabprevious<CR>
 nnoremap <C-l> :tabnext<CR>
 
+" PHP Stuff
+au BufNewFile,BufRead *.php set filetype=php
+au BufNewFile,BufRead *.endfile set filetype=endfile
 " Use PHP syntax highlighting for squarespace templates
 autocmd BufNewFile,BufRead *.list,*.item,*.block set syntax=php
 
@@ -175,10 +184,6 @@ let g:airline_theme='base16_eighties'
 
 "Go to prev file
 nnoremap <C-b> :e#<CR>
-
-" JS/TS Stuff
-" TS indentation
-au FileType typescript setl sw=2 sts=2 et
 
 " Ale Fixers
 let g:ale_fixers = {
@@ -196,6 +201,19 @@ let g:ale_lint_on_save = 1
 let g:ale_fix_on_save = 1
 "highlight ALEError ctermbg=Red
 "highlight ALEError ctermfg=Black
+
+" JSON stuff
+au! BufRead,BufNewFile *.json set filetype=json
+
+augroup json_autocmd
+  autocmd!
+  autocmd FileType json set autoindent
+  autocmd FileType json set formatoptions=tcq2l
+  autocmd FileType json set textwidth=78 shiftwidth=2
+  autocmd FileType json set softtabstop=2 tabstop=8
+  autocmd FileType json set expandtab
+  autocmd FileType json set foldmethod=syntax
+augroup END
 
 "COC Config
 " if hidden is not set, TextEdit might fail.
