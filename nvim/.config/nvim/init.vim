@@ -14,13 +14,16 @@ Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/loremipsum'
 Plug 'brooth/far.vim'
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-css'
 Plug 'tpope/vim-dispatch'
 Plug 'radenling/vim-dispatch-neovim'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-unimpaired'
 Plug 'Chiel92/vim-autoformat'
 Plug 'elzr/vim-json'
+Plug 'guenti/vim-php-cs-fixer'
 call plug#end()
 
 syntax on
@@ -188,6 +191,7 @@ nnoremap <C-b> :e#<CR>
 " Ale Fixers
 let g:ale_fixers = {
 \   'javascript': ['prettier', 'eslint'],
+\   'typescript': ['prettier', 'tslint'],
 \   'scss'      : ['stylelint']
 \}
 
@@ -216,6 +220,9 @@ augroup json_autocmd
 augroup END
 
 "COC Config
+" Path to node
+let g:coc_node_path = "/usr/local/Cellar/node/14.4.0/bin/node"
+
 " if hidden is not set, TextEdit might fail.
 set hidden
 
