@@ -2,8 +2,8 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # NVM
-export NVM_DIR="$HOME/.nvm"
-  . "$HOME/.nvm/nvm.sh"
+export NVM_DIR=~/.nvm
+source $(brew --prefix nvm)/nvm.sh
 
 # Base16 Shell
 BASE16_SHELL="$HOME/.config/base16-shell/"
