@@ -139,7 +139,7 @@ alias ss="git status -s"                                                        
 alias s="branch && git status -s"                                                  					# Display shorthand git status with amaing lolcat
 alias master="git checkout master"                                                          # Checkout master branch
 alias staging="git checkout staging"                                                        # Checkout staging branch
-alias dev="git checkout development"                                                        # Checkout development branch
+alias dev="git checkout develop"                                                            # Checkout development branch
 alias checkout="git checkout "                                                              # Checkout Branch
 alias merge="git merge"                                                                 		# Merge Branch
 alias pp=ppFunction																																     			# Pull merge then push
@@ -158,6 +158,7 @@ alias timesheet="git log --pretty='%C(bold blue)<%an>%Creset %Cgreen(%ad) %Cred%
 alias glog="git log --pretty='%C(bold blue)<%an>%Creset %Cgreen(%ad) %Cred%h%Creset -%C(auto)%d%Creset %s' --date=format:'%a %d-%m-%Y %H:%M:%S'"
 alias glol="git log --oneline"
 alias weather="curl wttr.in/Melbourne"
+alias list-android="cd ~/Library/Android/Sdk/tools && ./emulator -list-avds"
 
 # Set Colors
 
