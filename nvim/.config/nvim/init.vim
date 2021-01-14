@@ -1,20 +1,20 @@
 call plug#begin('~/.config/vim/plugged')
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() }}
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'shougo/vimproc.vim', {'do' : 'make'}
 Plug 'chriskempson/base16-vim'
 Plug 'tpope/vim-rails'
 Plug 'takac/vim-hardtime'
-Plug 'w0rp/ale'
 Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-commentary'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/loremipsum'
 Plug 'brooth/far.vim'
-Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc.nvim', { 'do': { -> coc#util#install() }}
 Plug 'tpope/vim-dispatch'
 Plug 'radenling/vim-dispatch-neovim'
 Plug 'sheerun/vim-polyglot'
@@ -51,6 +51,9 @@ if filereadable(expand("~/.vimrc_background"))
   source ~/.vimrc_background
 endif
 
+" Disable folding
+set foldlevelstart=99
+
 " let enter be used to select item
 :inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
@@ -66,7 +69,7 @@ let mapleader = "\<Space>"
 
 " Remap jk to save and exit insert mode
 :imap jk <Esc>:w<CR>
-:imap <leader>` <Esc>
+:imap `` <Esc>
 
 " HTML Stuff
 let g:html_indent_tags = 'p\|li\|nav'
@@ -150,14 +153,14 @@ augroup numbertoggle autocmd!
 augroup END
 
 " Remove trailing whitespace on save
-function! <SID>StripTrailingWhitespaces()
-	let l = line(".")
-	let c = col(".")
-	%s/\s\+$//e
-	call cursor(l, c)
-endfun
+" function! <SID>StripTrailingWhitespaces()
+" 	let l = line(".")
+" 	let c = col(".")
+" 	%s/\s\+$//e
+" 	call cursor(l, c)
+" endfun
 
-autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+" autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
 " Fugitive
 set diffopt+=vertical
@@ -186,24 +189,6 @@ let g:airline_theme='base16_eighties'
 
 "Go to prev file
 nnoremap <C-b> :e#<CR>
-
-" Ale Fixers
-let g:ale_fixers = {
-\   'javascript': ['prettier', 'eslint'],
-\   'typescript': ['prettier', 'tslint'],
-\   'scss'      : ['stylelint']
-\}
-
-nmap <silent> <C-k> <Plug>(ale_previous)
-nmap <silent> <C-j> <Plug>(ale_next)
-let g:ale_typescript_tslint_use_global = 0
-let g:ale_typescript_tslint_config_path = './tslint.json'
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_enter = 0
-let g:ale_lint_on_save = 1
-let g:ale_fix_on_save = 1
-"highlight ALEError ctermbg=Red
-"highlight ALEError ctermfg=Black
 
 " JSON stuff
 au! BufRead,BufNewFile *.json set filetype=json
@@ -339,4 +324,4 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 " Enable mousewheel
-set mouse=a
+" set mouse=a
