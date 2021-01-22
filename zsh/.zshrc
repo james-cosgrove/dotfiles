@@ -158,7 +158,7 @@ alias timesheet="git log --pretty='%C(bold blue)<%an>%Creset %Cgreen(%ad) %Cred%
 alias glog="git log --pretty='%C(bold blue)<%an>%Creset %Cgreen(%ad) %Cred%h%Creset -%C(auto)%d%Creset %s' --date=format:'%a %d-%m-%Y %H:%M:%S'"
 alias glol="git log --oneline"
 alias weather="curl wttr.in/Melbourne"
-alias list-android="cd ~/Library/Android/Sdk/tools && ./emulator -list-avds"
+alias list-android="emulator -list-avds"
 
 # Set Colors
 
