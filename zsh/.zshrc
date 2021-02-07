@@ -159,6 +159,7 @@ alias glog="git log --pretty='%C(bold blue)<%an>%Creset %Cgreen(%ad) %Cred%h%Cre
 alias glol="git log --oneline"
 alias weather="curl wttr.in/Melbourne"
 alias list-android="emulator -list-avds"
+alias reverse="adb reverse tcp:8081 tcp:8081"
 
 # Set Colors
 
