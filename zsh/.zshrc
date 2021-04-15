@@ -175,6 +175,7 @@ alias reverse="adb reverse tcp:8081 tcp:8081"
 export PATH="/usr/local/opt/node@8/bin:$PATH"
 export PATH="/usr/local/opt/mysql/bin:$PATH"
 export PATH="/usr/local/opt/libiconv/bin:$PATH"
+export PATH="/Users/jamescosgrove/Library/Python/3.9/bin:$PATH"
 export PATH=/usr/local/bin:$PATH
 
 # chruby config

@@ -324,4 +324,4 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 " Enable mousewheel
-" set mouse=a
+set mouse=a
