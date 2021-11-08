@@ -121,6 +121,11 @@ pushCurrentBranch(){
 	git push origin $branch
 	e_success "Commits pushed to \"$branch\""
 }
+forcePushCurrentBranch(){
+	branch=$( branch-name )
+	git push --force-with-lease origin $branch
+	e_success "Commits pushed to \"$branch\""
+}
 printCurrentBranch(){
 	if [ -z "$1" ]; then
 		branch=$( branch-name )
@@ -146,10 +151,12 @@ alias pp=ppFunction																																     			# Pull merge then pus
 alias ppm=ppmFunction																																     		# Pull merge then push
 alias push=pushCurrentBranch	                                                              # Push current branch
 alias pull=pullCurrentBranch		                                                            # Pull current branch
+alias forcepush=forcePushCurrentBranch	                                                              # Push current branch
 alias branches="git branch | cowsay -f tux"                                                 # List Branches
 alias branch=printCurrentBranch                                                      				# Current Branch
 alias b=printCurrentBranch                                                                  # Current Branch
 alias commit="git commit -m"                                                                # Shorthand for commiting
+alias amend="git commit -a --amend --no-edit"                                              # Amend last commit by adding all local changes without message
 alias gadd="git add -A .; e_success 'Files added to be committed'"                          # Stage files
 alias gacm="git add -A .; e_success 'Files added to be committed'; git commit -m"           # Stage files then commit them with message
 alias reset='bundle exec rake db:migrate:reset && bundle exec rake seed:migrate'
@@ -160,6 +167,7 @@ alias glol="git log --oneline"
 alias weather="curl wttr.in/Melbourne"
 alias list-android="emulator -list-avds"
 alias reverse="adb reverse tcp:8081 tcp:8081"
+alias sleep="pmset sleepnow"
 
 # Set Colors
 
