@@ -21,7 +21,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-unimpaired'
 Plug 'Chiel92/vim-autoformat'
 Plug 'elzr/vim-json'
-Plug 'guenti/vim-php-cs-fixer'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 call plug#end()
 
 syntax on
@@ -57,11 +57,11 @@ set foldlevelstart=99
 " let enter be used to select item
 :inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
-" Maintain undo history between sessions
-set undofile
-
 " Specify undo file directory
 set undodir=~/.config/nvim/undodir
+
+" Maintain undo history between sessions
+set undofile
 
 " Remap leader key to space
 let mapleader = "\<Space>"
@@ -69,7 +69,6 @@ let mapleader = "\<Space>"
 
 " Remap jk to save and exit insert mode
 :imap jk <Esc>:w<CR>
-:imap `` <Esc>
 
 " HTML Stuff
 let g:html_indent_tags = 'p\|li\|nav'
@@ -128,6 +127,7 @@ nnoremap <leader>mn o@include respond-to(netbook) {<CR>}<Esc>O
 nnoremap <leader>md o@include respond-to(desktop) {<CR>}<Esc>O
 nnoremap <leader>l oconsole.log()<Esc>F(a
 
+" Auto closing
 inoremap {<CR> {<CR>}<ESC>O
 inoremap (<CR> (<CR>)<ESC>O
 inoremap [<CR> [<CR>]<ESC>O
@@ -153,14 +153,14 @@ augroup numbertoggle autocmd!
 augroup END
 
 " Remove trailing whitespace on save
-" function! <SID>StripTrailingWhitespaces()
-" 	let l = line(".")
-" 	let c = col(".")
-" 	%s/\s\+$//e
-" 	call cursor(l, c)
-" endfun
+function! <SID>StripTrailingWhitespaces()
+	let l = line(".")
+	let c = col(".")
+	%s/\s\+$//e
+	call cursor(l, c)
+endfun
 
-" autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
 " Fugitive
 set diffopt+=vertical
@@ -171,12 +171,6 @@ let g:NERDTreeWinSize=40
 " Remap change tab commands
 nnoremap <C-h> :tabprevious<CR>
 nnoremap <C-l> :tabnext<CR>
-
-" PHP Stuff
-au BufNewFile,BufRead *.php set filetype=php
-au BufNewFile,BufRead *.endfile set filetype=endfile
-" Use PHP syntax highlighting for squarespace templates
-autocmd BufNewFile,BufRead *.list,*.item,*.block set syntax=php
 
 " Override error highlighting to underlines
 hi clear SpellBad
