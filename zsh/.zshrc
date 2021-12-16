@@ -110,6 +110,7 @@ e_bold() { printf "${bold}%s${reset}\n" "$@"
 e_note() { printf "${underline}${bold}${blue}Note:${reset}  ${blue}%s${reset}\n" "$@"
 }
 
+# Git util functions
 
 pullCurrentBranch(){
 	branch=$( branch-name )
@@ -139,6 +140,7 @@ printCurrentBranch(){
 
 # Aliases
 
+# Git
 alias branch-name="git rev-parse --abbrev-ref HEAD"
 alias ss="git status -s"                                                                    # Display shorthand git status
 alias s="branch && git status -s"                                                  					# Display shorthand git status with amaing lolcat
@@ -159,15 +161,21 @@ alias commit="git commit -m"                                                    
 alias amend="git commit -a --amend --no-edit"                                              # Amend last commit by adding all local changes without message
 alias gadd="git add -A .; e_success 'Files added to be committed'"                          # Stage files
 alias gacm="git add -A .; e_success 'Files added to be committed'; git commit -m"           # Stage files then commit them with message
+alias glog="git log --pretty='%C(bold blue)<%an>%Creset %Cgreen(%ad) %Cred%h%Creset -%C(auto)%d%Creset %s' --date=format:'%a %d-%m-%Y %H:%M:%S'"
+alias glol="git log --oneline"
+
+# Utils
+alias pythonstart="source betcore/venv/bin/activate && cd betcore && ./run.sh"
 alias reset='bundle exec rake db:migrate:reset && bundle exec rake seed:migrate'
 alias s='rails s -b 0.0.0.0 -p 3000'
 alias timesheet="git log --pretty='%C(bold blue)<%an>%Creset %Cgreen(%ad) %Cred%h%Creset -%C(auto)%d%Creset %s' --date=format:'%a %d-%m-%Y %H:%M:%S' --author=james"
-alias glog="git log --pretty='%C(bold blue)<%an>%Creset %Cgreen(%ad) %Cred%h%Creset -%C(auto)%d%Creset %s' --date=format:'%a %d-%m-%Y %H:%M:%S'"
-alias glol="git log --oneline"
+
+# Misc
 alias weather="curl wttr.in/Melbourne"
 alias list-android="emulator -list-avds"
 alias reverse="adb reverse tcp:8081 tcp:8081"
 alias sleep="pmset sleepnow"
+
 
 # Set Colors
 
