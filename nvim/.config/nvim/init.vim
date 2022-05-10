@@ -22,6 +22,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'Chiel92/vim-autoformat'
 Plug 'elzr/vim-json'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+Plug 'dpelle/vim-languagetool'
 call plug#end()
 
 syntax on
@@ -51,8 +52,23 @@ if filereadable(expand("~/.vimrc_background"))
   source ~/.vimrc_background
 endif
 
+" Always open splits to right
+set splitright
+
+" Set fugutive window height
+set previewheight=30
+
 " Disable folding
 set foldlevelstart=99
+
+" Fugitive
+set diffopt+=vertical
+
+" Enable mousewheel
+set mouse=a
+
+" Default window size for NERDTree
+let g:NERDTreeWinSize=40
 
 " let enter be used to select item
 :inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
@@ -63,12 +79,11 @@ set undodir=~/.config/nvim/undodir
 " Maintain undo history between sessions
 set undofile
 
-" Remap leader key to space
-let mapleader = "\<Space>"
-":set timeout timeoutlen=100
-
-" Remap jk to save and exit insert mode
-:imap jk <Esc>:w<CR>
+" NerdTree
+nnoremap <leader>n :NERDTree ~/Sites<CR>
+nnoremap <leader>r :NERDTreeFind<CR>
+let g:NERDTreeDirArrowExpandable="+"
+let g:NERDTreeDirArrowCollapsible="~"
 
 " HTML Stuff
 let g:html_indent_tags = 'p\|li\|nav'
@@ -81,64 +96,6 @@ let g:python3_host_prog = '/usr/local/bin/python3'
 autocmd BufNewFile,BufRead *.scss :set ft=scss.css
 nnoremap <leader>; 02Wdv$i
 nnoremap <leader>S vi{:sort<CR>
-
-" Remap Ctrl-p to fzf
-nnoremap <C-p> :Files<CR>
-set rtp+=/usr/local/opt/fzf
-
-" Map ESC to clear search highlighting
-map <esc> :noh<CR>
-
-" Emmet VIM
-let g:user_emmet_leader_key='<C-e>'
-
-" Search smart case
-set ignorecase
-set smartcase
-
-" ripgrep settings
-let g:rg_highlight="true"
-
-" Always open splits to right
-set splitright
-
-" Split resizing
-" Shortcut for small increments
-nnoremap <Leader>iw <C-w>20><CR>
-nnoremap <Leader>dw <C-w>20<<CR>
-nnoremap <Leader>ih <C-w>10+<CR>
-nnoremap <Leader>dh <C-w>10-<CR>
-
-" Set fugutive window height
-set previewheight=30
-
-" Open ripgrep results in new tab
-autocmd FileType qf nnoremap <buffer> <C-T> <C-W><Enter><C-W>T
-
-" Open ripgrep results in vertical split
-autocmd FileType qf nnoremap <buffer> <C-V> <C-W><Enter><C-W>L
-
-" Far use ripgrep
-let g:far#source="rgnvim"
-
-" Snippets
-nnoremap <leader>mt o@include respond-to(tablet) {<CR>}<Esc>O
-nnoremap <leader>mn o@include respond-to(netbook) {<CR>}<Esc>O
-nnoremap <leader>md o@include respond-to(desktop) {<CR>}<Esc>O
-nnoremap <leader>l oconsole.log()<Esc>F(a
-
-" Auto closing
-inoremap {<CR> {<CR>}<ESC>O
-inoremap (<CR> (<CR>)<ESC>O
-inoremap [<CR> [<CR>]<ESC>O
-
-set wildignore+=*/tmp/*,*/node_modules/*,*.so,*.swp,*.zip
-
-" NerdTree
-nnoremap <leader>n :NERDTree ~/Sites<CR>
-nnoremap <leader>r :NERDTreeFind<CR>
-let g:NERDTreeDirArrowExpandable="+"
-let g:NERDTreeDirArrowCollapsible="~"
 
 " Auto watch vimrc for changes and reload.
 augroup myvimrc
@@ -162,27 +119,11 @@ endfun
 
 autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
-" Fugitive
-set diffopt+=vertical
-
-" Default window size for NERDTree
-let g:NERDTreeWinSize=40
-
-" Remap change tab commands
-nnoremap <C-h> :tabprevious<CR>
-nnoremap <C-l> :tabnext<CR>
-
-" Override error highlighting to underlines
-hi clear SpellBad
-hi SpellBad cterm=underline
-hi clear SpellCap
-hi SpellCap cterm=underline
+" Emmet VIM
+let g:user_emmet_leader_key='<C-e>'
 
 "Airline colour theme
 let g:airline_theme='base16_eighties'
-
-"Go to prev file
-nnoremap <C-b> :e#<CR>
 
 " JSON stuff
 au! BufRead,BufNewFile *.json set filetype=json
@@ -197,7 +138,70 @@ augroup json_autocmd
   autocmd FileType json set foldmethod=syntax
 augroup END
 
-"COC Config
+
+" CUSTOM SNIPPETS AND REMAPPING >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+" Remap Ctrl-p to fzf
+nnoremap <C-p> :Files<CR>
+set rtp+=/usr/local/opt/fzf
+
+" Map ESC to clear search highlighting
+map <esc> :noh<CR>
+
+" Remap leader key to space
+let mapleader = "\<Space>"
+":set timeout timeoutlen=100
+
+" Remap jk to save and exit insert mode
+:imap jk <Esc>:w<CR>
+
+" Remap change tab commands
+nnoremap <C-h> :tabprevious<CR>
+nnoremap <C-l> :tabnext<CR>
+
+"Go to prev file
+nnoremap <C-b> :e#<CR>
+
+" Split resizing
+nnoremap <Leader>iw <C-w>20><CR>
+nnoremap <Leader>dw <C-w>20<<CR>
+nnoremap <Leader>ih <C-w>10+<CR>
+nnoremap <Leader>dh <C-w>10-<CR>
+
+" Snippets
+nnoremap <leader>mt o@include respond-to(tablet) {<CR>}<Esc>O
+nnoremap <leader>mn o@include respond-to(netbook) {<CR>}<Esc>O
+nnoremap <leader>md o@include respond-to(desktop) {<CR>}<Esc>O
+nnoremap <leader>l oconsole.log()<Esc>F(a
+
+" Auto closing
+inoremap {<CR> {<CR>}<ESC>O
+inoremap (<CR> (<CR>)<ESC>O
+inoremap [<CR> [<CR>]<ESC>O
+" <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+
+" SEARCH SETTINGS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+" Open ripgrep results in new tab
+autocmd FileType qf nnoremap <buffer> <C-T> <C-W><Enter><C-W>T
+
+" Open ripgrep results in vertical split
+autocmd FileType qf nnoremap <buffer> <C-V> <C-W><Enter><C-W>L
+
+" Search smart case
+set ignorecase
+set smartcase
+
+" ripgrep settings
+let g:rg_highlight="true"
+
+" Far use ripgrep
+let g:far#source="rgnvim"
+
+set wildignore+=*/tmp/*,*/node_modules/*,*.so,*.swp,*.zip
+" <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+
+" COC Config >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 " if hidden is not set, TextEdit might fail.
 set hidden
 
@@ -285,7 +289,13 @@ nmap <leader>qf  <Plug>(coc-fix-current)
 command! -nargs=0 Format :call CocAction('format')
 
 " Use `:Fold` for fold current buffer
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+command! -nargs=? Fold :call CocAction('fold', <f-args>)
+
+" Colour highlighting on cursor hold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Override highlighting
+highlight CocHintSign ctermfg=Yellow guifg=#FAB005
 
 " Add diagnostic info for https://github.com/itchyny/lightline.vim
 let g:lightline = {
@@ -316,6 +326,4 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
-
-" Enable mousewheel
-set mouse=a
+" <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<

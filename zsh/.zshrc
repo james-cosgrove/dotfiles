@@ -163,7 +163,7 @@ alias gadd="git add -A .; e_success 'Files added to be committed'"              
 alias gacm="git add -A .; e_success 'Files added to be committed'; git commit -m"           # Stage files then commit them with message
 alias glog="git log --pretty='%C(bold blue)<%an>%Creset %Cgreen(%ad) %Cred%h%Creset -%C(auto)%d%Creset %s' --date=format:'%a %d-%m-%Y %H:%M:%S'"
 alias glol="git log --oneline"
-alias betcloud="cd $HOME/code/client/betcloud-backend/betcore && source $HOME/code/client/betcloud-backend/betcore/venv/bin/activate && $HOME/code/client/betcloud-backend/betcore/run.sh"
+alias betcloud="cd $HOME/code/betcloud-backend/betcore && source $HOME/code/betcloud-backend/betcore/venv/bin/activate && $HOME/code/betcloud-backend/betcore/run.sh"
 
 # Utils
 alias pythonstart="source venv/bin/activate && ./run.sh"
