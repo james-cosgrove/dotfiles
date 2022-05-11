@@ -22,7 +22,6 @@ Plug 'tpope/vim-unimpaired'
 Plug 'Chiel92/vim-autoformat'
 Plug 'elzr/vim-json'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-Plug 'dpelle/vim-languagetool'
 call plug#end()
 
 syntax on
@@ -51,6 +50,10 @@ if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
   source ~/.vimrc_background
 endif
+
+" Remap leader key to space
+let mapleader = "\<Space>"
+":set timeout timeoutlen=100
 
 " Always open splits to right
 set splitright
@@ -146,10 +149,6 @@ set rtp+=/usr/local/opt/fzf
 
 " Map ESC to clear search highlighting
 map <esc> :noh<CR>
-
-" Remap leader key to space
-let mapleader = "\<Space>"
-":set timeout timeoutlen=100
 
 " Remap jk to save and exit insert mode
 :imap jk <Esc>:w<CR>
