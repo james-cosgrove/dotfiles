@@ -14,7 +14,7 @@ Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/loremipsum'
 Plug 'brooth/far.vim'
-Plug 'neoclide/coc.nvim', { 'do': { -> coc#util#install() }}
+Plug 'neoclide/coc.nvim', {'tag': 'v0.0.81'}
 Plug 'tpope/vim-dispatch'
 Plug 'radenling/vim-dispatch-neovim'
 Plug 'sheerun/vim-polyglot'
@@ -22,6 +22,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'Chiel92/vim-autoformat'
 Plug 'elzr/vim-json'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+Plug 'lilydjwg/colorizer'
 call plug#end()
 
 syntax on
@@ -125,7 +126,7 @@ autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 " Emmet VIM
 let g:user_emmet_leader_key='<C-e>'
 
-"Airline colour theme
+" Airline colour theme
 let g:airline_theme='base16_eighties'
 
 " JSON stuff
@@ -147,18 +148,18 @@ augroup END
 nnoremap <C-p> :Files<CR>
 set rtp+=/usr/local/opt/fzf
 
-" Map ESC to clear search highlighting
-map <esc> :noh<CR>
-
 " Remap jk to save and exit insert mode
 :imap jk <Esc>:w<CR>
+
+"Go to prev file
+nnoremap <C-b> :e#<CR>
+
+" Map ESC to clear search highlighting
+map <esc> :noh<CR>
 
 " Remap change tab commands
 nnoremap <C-h> :tabprevious<CR>
 nnoremap <C-l> :tabnext<CR>
-
-"Go to prev file
-nnoremap <C-b> :e#<CR>
 
 " Split resizing
 nnoremap <Leader>iw <C-w>20><CR>
@@ -222,6 +223,7 @@ inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
+
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_space() abort
@@ -256,9 +258,6 @@ function! s:show_documentation()
     call CocAction('doHover')
   endif
 endfunction
-
-" Highlight symbol under cursor on CursorHold
-"autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
@@ -326,3 +325,4 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 " <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+

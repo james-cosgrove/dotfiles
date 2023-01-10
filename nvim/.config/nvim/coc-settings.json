@@ -15,7 +15,7 @@
   "coc.preferences.formatOnSaveFiletypes": ["*"],
   "dialog.maxHeight": {
     "type": "number",
-    "default": 100,
+    "default": 500,
     "description": "Text shown in statusline to indicate snippet session is activated."
   }
 }
