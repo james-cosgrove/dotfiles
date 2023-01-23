@@ -4,7 +4,7 @@
 ZSH_DISABLE_COMPFIX=true
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/jamescosgrove/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -163,18 +163,18 @@ alias gadd="git add -A .; e_success 'Files added to be committed'"              
 alias gacm="git add -A .; e_success 'Files added to be committed'; git commit -m"           # Stage files then commit them with message
 alias glog="git log --pretty='%C(bold blue)<%an>%Creset %Cgreen(%ad) %Cred%h%Creset -%C(auto)%d%Creset %s' --date=format:'%a %d-%m-%Y %H:%M:%S'"
 alias glol="git log --oneline"
+alias timesheet="git log --pretty='%C(bold blue)<%an>%Creset %Cgreen(%ad) %Cred%h%Creset -%C(auto)%d%Creset %s' --date=format:'%a %d-%m-%Y %H:%M:%S' --author=james"
 
 # Utils
 alias pythonstart="source venv/bin/activate && ./run.sh"
 alias reset='bundle exec rake db:migrate:reset && bundle exec rake seed:migrate'
 alias s='rails s -b 0.0.0.0 -p 3000'
-alias timesheet="git log --pretty='%C(bold blue)<%an>%Creset %Cgreen(%ad) %Cred%h%Creset -%C(auto)%d%Creset %s' --date=format:'%a %d-%m-%Y %H:%M:%S' --author=james"
-
-# Misc
-alias weather="curl wttr.in/Melbourne"
 alias list-android="emulator -list-avds"
 alias reverse="adb reverse tcp:8081 tcp:8081"
 alias sleep="pmset sleepnow"
+
+# Misc
+alias weather="curl wttr.in/Melbourne"
 
 
 # Set Colors
@@ -188,10 +188,7 @@ alias sleep="pmset sleepnow"
 #tan=$(tput setaf 3)
 #blue=$(tput setaf 38)
 
-export PATH="/usr/local/opt/node@8/bin:$PATH"
-export PATH="/usr/local/opt/mysql/bin:$PATH"
-export PATH="/usr/local/opt/libiconv/bin:$PATH"
-export PATH="/Users/jamescosgrove/Library/Python/3.9/bin:$PATH"
+export PATH="$HOME/Library/Python/3.9/bin:$PATH"
 export PATH="/Applications/Xcode.app/Contents/Developer/usr/bin:$PATH"
 export PATH=/usr/local/bin:$PATH
 
@@ -202,41 +199,57 @@ if [ -d /usr/local/opt/chruby/share/chruby/chruby.sh ]; then
   source /usr/local/opt/chruby/share/chruby/auto.sh
 fi
 
-
 # Base16 Shell
 BASE16_SHELL="$HOME/.config/base16-shell/"
 [ -n "$PS1" ] && \
     [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
-        eval "$("$BASE16_SHELL/profile_helper.sh")"
+        source "$BASE16_SHELL/profile_helper.sh"
+
+base16_classic-dark
 
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# NVM
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export HOMEBREW_DIR
 
-autoload -U add-zsh-hook
-load-nvmrc() {
-  local node_version="$(nvm version)"
-  local nvmrc_path="$(nvm_find_nvmrc)"
+# For non-standard Homebrew installation as required due to no root access
+# Also set HOMEBREW_DIR variable for handling non-standard installation
+if [ -d "${HOME}/homebrew" ]; then
+	export PATH=$HOME/homebrew/bin:$PATH
+  HOMEBREW_DIR="$HOME/homebrew"
+else
+  HOMEBREW_DIR="/usr/local"
+fi
 
-  if [ -n "$nvmrc_path" ]; then
-    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+export PATH=$HOMEBREW_DIR:$PATH
 
-    if [ "$nvmrc_node_version" = "N/A" ]; then
-      nvm install
-    elif [ "$nvmrc_node_version" != "$node_version" ]; then
-      nvm use
-    fi
-  elif [ "$node_version" != "$(nvm version default)" ]; then
-    echo "Reverting to nvm default version"
-    nvm use default
-  fi
-}
-add-zsh-hook chpwd load-nvmrc
-load-nvmrc
+# NVM - only if NVM is installed on machine - supress error reporting in command line
+if brew list nvm 2>/dev/null; then
+    export NVM_DIR="$HOME/.nvm"
+  [ -s "$HOMEBREW_DIR/opt/nvm/nvm.sh" ] && \. "$HOMEBREW_DIR/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "$HOMEBREW_DIR/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$HOMEBREW_DIR/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+	autoload -U add-zsh-hook
+	load-nvmrc() {
+		local node_version="$(nvm version)"
+		local nvmrc_path="$(nvm_find_nvmrc)"
+
+		if [ -n "$nvmrc_path" ]; then
+			local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+
+			if [ "$nvmrc_node_version" = "N/A" ]; then
+				nvm install
+			elif [ "$nvmrc_node_version" != "$node_version" ]; then
+				nvm use
+			fi
+		elif [ "$node_version" != "$(nvm version default)" ]; then
+			echo "Reverting to nvm default version"
+			nvm use default
+		fi
+	}
+	add-zsh-hook chpwd load-nvmrc
+	load-nvmrc
+fi
 
 # Android dev env setup
 export ANDROID_HOME=$HOME/Library/Android/sdk
@@ -244,3 +257,22 @@ export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+alias python=/usr/bin/python3
+export PYENV_ROOT="$HOME/.pyenv"
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+if [ -d "${HOME}/homebrew/opt/ruby/bin" ]; then
+  export PATH=$HOME/homebrew/opt/ruby/bin:$PATH
+  export PATH=`gem environment gemdir`/bin:$PATH
+fi
+
+PATH="${HOME}/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="${HOME}/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="${HOME}/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"${HOME}/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=${HOME}/perl5"; export PERL_MM_OPT;
+
+eval "$(nodenv init -)"
