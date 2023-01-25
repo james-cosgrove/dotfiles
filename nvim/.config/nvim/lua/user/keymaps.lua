@@ -3,7 +3,7 @@ local opts = { noremap = true, silent = true }
 local term_opts = { silent = true }
 
 -- Shorten function name
-local keymap = vim.api.nvim_set_keymap
+local keymap = vim.keymap.set
 
 --Remap space as leader key
 keymap("", "<Space>", "<Nop>", opts)
@@ -51,6 +51,10 @@ keymap("n", "<C-b>", ":e#<CR>", opts)
 
 -- Add console.log() to next line
 -- keymap("n", "<C-l>", "oconsole.log()<Esc>F(a", opts)
+
+-- Search
+-- Text search
+keymap('n', '<cmd>Telescope live_grep theme=ivy<cr>', 'Find Text', opts)
 
 -- Insert --
 -- Press jk fast to exit insert mode a save 
