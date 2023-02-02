@@ -43,13 +43,15 @@ return packer.startup(function(use)
   use "wbthomason/packer.nvim" -- Have packer manage itself
   use "nvim-lua/plenary.nvim" -- Useful lua functions used by lots of plugins
   use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
-  use "numToStr/Comment.nvim"
-  use "JoosepAlviste/nvim-ts-context-commentstring"
+  -- use "numToStr/Comment.nvim"
+  -- use "JoosepAlviste/nvim-ts-context-commentstring"
   use "kyazdani42/nvim-web-devicons"
   use "kyazdani42/nvim-tree.lua"
+  -- use "ryanoasis/vim-devicons"
+  -- use "scrooloose/nerdtree"
 	use "moll/vim-bbye"
   use "nvim-lualine/lualine.nvim"
-  use "ahmedkhalf/project.nvim"
+  -- use "ahmedkhalf/project.nvim"
   use "lewis6991/impatient.nvim"
   use "goolord/alpha-nvim"
 	use "folke/which-key.nvim"
@@ -60,6 +62,11 @@ return packer.startup(function(use)
         require('tabline').setup({})
     end,
   })
+  use({
+    "iamcco/markdown-preview.nvim",
+    run = function() vim.fn["mkdp#util#install"]() end,
+  })
+  use "gpanders/editorconfig.nvim"
 
 	-- Colorschemes
   use "RRethy/nvim-base16"
@@ -86,6 +93,7 @@ return packer.startup(function(use)
 
 	-- Telescope
 	use "nvim-telescope/telescope.nvim"
+  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
 	-- Treesitter
 	use "nvim-treesitter/nvim-treesitter"

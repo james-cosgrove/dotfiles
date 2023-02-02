@@ -29,14 +29,24 @@ vim.cmd [[
     autocmd User AlphaReady set showtabline=0 | autocmd BufUnload <buffer> set showtabline=2
   augroup end
 
-  augroup numbertoggle autocmd!
+  augroup numbertoggle
+    autocmd!
     autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
     autocmd BufLeave,FocusLost,InsertEnter * set norelativenumber
   augroup END
-]]
 
--- Autoformat
--- augroup _lsp
---   autocmd!
---   autocmd BufWritePre * lua vim.lsp.buf.formatting()
--- augroup end
+  augroup diagnostics
+    autocmd!
+    autocmd CursorHold * lua vim.diagnostic.open_float()
+  augroup END
+
+  augroup _lsp
+    autocmd!
+    autocmd BufWritePre * lua vim.lsp.buf.format({ async = true })
+  augroup end
+
+  augroup _explorer
+    autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') |
+      \ :NvimTreeOpen :cd argv()[0] | endif
+  augroup end
+]]

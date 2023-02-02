@@ -14,10 +14,3 @@ require "user.impatient"
 require "user.alpha"
 require "user.whichkey"
 require "user.autocommands"
-require("lsp-colors").setup({
-  Error = "#db4b4b",
-  Warning = "#e0af68",
-  Information = "#0db9d7",
-  Hint = "#10B981",
-  Ok = '#10B981'
-})

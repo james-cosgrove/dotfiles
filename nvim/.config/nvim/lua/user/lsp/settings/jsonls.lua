@@ -30,6 +30,7 @@ local schemas = {
   {
     description = "ESLint config",
     fileMatch = {
+      ".eslintrc.js",
       ".eslintrc.json",
       ".eslintrc",
     },
@@ -44,6 +45,7 @@ local schemas = {
     description = "Prettier config",
     fileMatch = {
       ".prettierrc",
+      ".prettierrc.js",
       ".prettierrc.json",
       "prettier.config.json",
     },
