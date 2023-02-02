@@ -180,9 +180,11 @@ alias weather="curl wttr.in/Melbourne"
 #tan=$(tput setaf 3)
 #blue=$(tput setaf 38)
 
-export PATH="$HOME/Library/Python/3.9/bin:$PATH"
-export PATH="/Applications/Xcode.app/Contents/Developer/usr/bin:$PATH"
+export PATH=$HOME/Library/Python/3.9/bin:$PATH
+export PATH=$HOME/Library/Python/3.11/bin:$PATH
+export PATH=/Applications/Xcode.app/Contents/Developer/usr/bin:$PATH
 export PATH=/usr/local/bin:$PATH
+export PATH=$HOME/.cargo/bin:$PATH
 
 # chruby config
 # Add conditional to check if directory exists for machines that don't run ruby
@@ -242,13 +244,12 @@ load-nvmrc
 
 # Android dev env setup
 export ANDROID_HOME=$HOME/Library/Android/sdk
-export PATH=$PATH:$ANDROID_HOME/emulator
-export PATH=$PATH:$ANDROID_HOME/tools
-export PATH=$PATH:$ANDROID_HOME/tools/bin
-export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH=$PATH:$ANDROID_HOME/emulator:$PATH
+export PATH=$PATH:$ANDROID_HOME/tools:$PATH
+export PATH=$PATH:$ANDROID_HOME/tools/bin:$PATH
+export PATH=$PATH:$ANDROID_HOME/platform-tools:$PATH
 
 alias python=/usr/bin/python3
-export PYENV_ROOT="$HOME/.pyenv"
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
@@ -258,7 +259,7 @@ if [ -d "${HOME}/homebrew/opt/ruby/bin" ]; then
   export PATH=`gem environment gemdir`/bin:$PATH
 fi
 
-PATH="${HOME}/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PATH=${HOME}/perl5/bin${PATH:+:${PATH}}; export PATH;
 PERL5LIB="${HOME}/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
 PERL_LOCAL_LIB_ROOT="${HOME}/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
 PERL_MB_OPT="--install_base \"${HOME}/perl5\""; export PERL_MB_OPT;
