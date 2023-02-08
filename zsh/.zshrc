@@ -138,7 +138,7 @@ alias ss="git status -s"                                                        
 alias s="branch && git status -s"                                                  					# Display shorthand git status with amaing lolcat
 alias master="git checkout master"                                                          # Checkout master branch
 alias staging="git checkout staging"                                                        # Checkout staging branch
-alias dev="git checkout develop"                                                            # Checkout development branch
+alias dev="git checkout dev"                                                            # Checkout development branch
 alias checkout="git checkout "                                                              # Checkout Branch
 alias merge="git merge"                                                                 		# Merge Branch
 alias pp=ppFunction																																     			# Pull merge then push
@@ -150,7 +150,7 @@ alias branches="git branch | cowsay -f tux"                                     
 alias branch=printCurrentBranch                                                      				# Current Branch
 alias b=printCurrentBranch                                                                  # Current Branch
 alias commit="git commit -m"                                                                # Shorthand for commiting
-alias amend="git commit -a --amend --no-edit"                                              # Amend last commit by adding all local changes without message
+alias gamend="git commit -a --amend --no-edit"                                              # Amend last commit by adding all local changes without message
 alias gadd="git add -A .; e_success 'Files added to be committed'"                          # Stage files
 alias gacm="git add -A .; e_success 'Files added to be committed'; git commit -m"           # Stage files then commit them with message
 alias glog="git log --pretty='%C(bold blue)<%an>%Creset %Cgreen(%ad) %Cred%h%Creset -%C(auto)%d%Creset %s' --date=format:'%a %d-%m-%Y %H:%M:%S'"
@@ -164,6 +164,11 @@ alias s='rails s -b 0.0.0.0 -p 3000'
 alias list-android="emulator -list-avds"
 alias reverse="adb reverse tcp:8081 tcp:8081"
 alias sleep="pmset sleepnow"
+
+# saml2aws Aliases
+alias samlmartechdev='saml2aws login --role=arn:aws:iam::031822892316:role/cloud-saml-martech-dev-developer --profile dev --disable-sessions --force --skip-prompt && export AWS_PROFILE=dev'
+# alias samlmartechstg='saml2aws login --role=arn:aws:iam::031822892316:role/cloud-saml-martech-stg-developer --profile stg --disable-sessions --force --session-duration=10800 --skip-prompt && export AWS_PROFILE=stg_dev'
+# alias samlmartechprd='saml2aws login --role=arn:aws:iam::031822892316:role/cloud-saml-martech-prd-developer --profile prd --disable-sessions --force --session-duration=3600 --skip-prompt && export AWS_PROFILE=prd'
 
 # Misc
 alias weather="curl wttr.in/Melbourne"
