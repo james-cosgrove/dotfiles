@@ -40,66 +40,69 @@ packer.init({
 
 -- Install your plugins here
 return packer.startup(function(use)
-  use "wbthomason/packer.nvim" -- Have packer manage itself
-  use "nvim-lua/plenary.nvim" -- Useful lua functions used by lots of plugins
-  use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
-  -- use "numToStr/Comment.nvim"
-  -- use "JoosepAlviste/nvim-ts-context-commentstring"
-  use "kyazdani42/nvim-web-devicons"
-  use "kyazdani42/nvim-tree.lua"
-  -- use "ryanoasis/vim-devicons"
-  -- use "scrooloose/nerdtree"
-	use "moll/vim-bbye"
-  use "nvim-lualine/lualine.nvim"
-  -- use "ahmedkhalf/project.nvim"
-  use "lewis6991/impatient.nvim"
-  use "goolord/alpha-nvim"
-	use "folke/which-key.nvim"
-  use "tpope/vim-commentary"
-  use({
-    'crispgm/nvim-tabline',
-    config = function()
-        require('tabline').setup({})
-    end,
-  })
-  use({
-    "iamcco/markdown-preview.nvim",
-    run = function() vim.fn["mkdp#util#install"]() end,
-  })
-  use "gpanders/editorconfig.nvim"
+	use("wbthomason/packer.nvim") -- Have packer manage itself
+	use("nvim-lua/plenary.nvim") -- Useful lua functions used by lots of plugins
+	use("windwp/nvim-autopairs") -- Autopairs, integrates with both cmp and treesitter
+	-- use "numToStr/Comment.nvim"
+	-- use "JoosepAlviste/nvim-ts-context-commentstring"
+	use("kyazdani42/nvim-web-devicons")
+	use("kyazdani42/nvim-tree.lua")
+	-- use "ryanoasis/vim-devicons"
+	-- use "scrooloose/nerdtree"
+	use("moll/vim-bbye")
+	use("nvim-lualine/lualine.nvim")
+	-- use "ahmedkhalf/project.nvim"
+	use("lewis6991/impatient.nvim")
+	use("goolord/alpha-nvim")
+	use("folke/which-key.nvim")
+	use("tpope/vim-commentary")
+	-- use({
+	--   'crispgm/nvim-tabline',
+	--   config = function()
+	--       require('tabline').setup({})
+	--   end,
+	-- })
+	use({
+		"iamcco/markdown-preview.nvim",
+		run = function()
+			vim.fn["mkdp#util#install"]()
+		end,
+	})
+	use("gpanders/editorconfig.nvim")
 
 	-- Colorschemes
-  use "RRethy/nvim-base16"
-  use "folke/lsp-colors.nvim"
+	use("RRethy/nvim-base16")
+	use("folke/lsp-colors.nvim")
 
-	-- Cmp 
-  use "hrsh7th/nvim-cmp" -- The completion plugin
-  -- use "hrsh7th/cmp-buffer" -- buffer completions
-  use "hrsh7th/cmp-path" -- path completions
-	use "saadparwaiz1/cmp_luasnip" -- snippet completions
-	use "hrsh7th/cmp-nvim-lsp"
-	use "hrsh7th/cmp-nvim-lua"
+	-- Cmp
+	use("hrsh7th/nvim-cmp") -- The completion plugin
+	-- use "hrsh7th/cmp-buffer" -- buffer completions
+	use("hrsh7th/cmp-path") -- path completions
+	use("saadparwaiz1/cmp_luasnip") -- snippet completions
+	use("hrsh7th/cmp-nvim-lsp")
+	use("hrsh7th/cmp-nvim-lua")
 
 	-- Snippets
-  use "L3MON4D3/LuaSnip" --snippet engine
-  use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
+	use("L3MON4D3/LuaSnip") --snippet engine
+	use("rafamadriz/friendly-snippets") -- a bunch of snippets to use
 
 	-- LSP
-	use "neovim/nvim-lspconfig" -- enable LSP
-  use "williamboman/mason.nvim" -- simple to use language server installer
-  use "williamboman/mason-lspconfig.nvim"
-	use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
-  use "RRethy/vim-illuminate"
+	use("neovim/nvim-lspconfig") -- enable LSP
+	use("williamboman/mason.nvim") -- simple to use language server installer
+	use("williamboman/mason-lspconfig.nvim")
+	use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
+	use("RRethy/vim-illuminate")
 
 	-- Telescope
-	use "nvim-telescope/telescope.nvim"
-  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+	use("nvim-telescope/telescope.nvim")
+	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 
 	-- Treesitter
-	use "nvim-treesitter/nvim-treesitter"
+	use("nvim-treesitter/nvim-treesitter")
 
 	-- Git
-	use "tpope/vim-fugitive"
+	use("tpope/vim-fugitive")
+	use("airblade/vim-gitgutter")
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
