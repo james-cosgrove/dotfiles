@@ -167,8 +167,8 @@ alias sleep="pmset sleepnow"
 
 # saml2aws Aliases
 alias samlmartechdev='saml2aws login --role=arn:aws:iam::031822892316:role/cloud-saml-martech-dev-developer --profile dev --disable-sessions --force --skip-prompt && export AWS_PROFILE=dev'
-# alias samlmartechstg='saml2aws login --role=arn:aws:iam::031822892316:role/cloud-saml-martech-stg-developer --profile stg --disable-sessions --force --session-duration=10800 --skip-prompt && export AWS_PROFILE=stg_dev'
-# alias samlmartechprd='saml2aws login --role=arn:aws:iam::031822892316:role/cloud-saml-martech-prd-developer --profile prd --disable-sessions --force --session-duration=3600 --skip-prompt && export AWS_PROFILE=prd'
+alias samlmartechstg='saml2aws login --role=arn:aws:iam::031822892316:role/cloud-saml-martech-stg-developer --profile stg --disable-sessions --force --session-duration=10800 --skip-prompt && export AWS_PROFILE=stg_dev'
+alias samlmartechprd='saml2aws login --role=arn:aws:iam::031822892316:role/cloud-saml-martech-prd-developer --profile prd --disable-sessions --force --session-duration=3600 --skip-prompt && export AWS_PROFILE=prd'
 
 # Misc
 alias weather="curl wttr.in/Melbourne"
@@ -185,18 +185,9 @@ alias weather="curl wttr.in/Melbourne"
 #tan=$(tput setaf 3)
 #blue=$(tput setaf 38)
 
-export PATH=$HOME/Library/Python/3.9/bin:$PATH
-export PATH=$HOME/Library/Python/3.11/bin:$PATH
 export PATH=/Applications/Xcode.app/Contents/Developer/usr/bin:$PATH
 export PATH=/usr/local/bin:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
-
-# chruby config
-# Add conditional to check if directory exists for machines that don't run ruby
-if [ -d /usr/local/opt/chruby/share/chruby/chruby.sh ]; then
-  source /usr/local/opt/chruby/share/chruby/chruby.sh
-  source /usr/local/opt/chruby/share/chruby/auto.sh
-fi
 
 # Base16 Shell
 BASE16_SHELL="$HOME/.config/base16-shell/"
@@ -209,10 +200,11 @@ base16_classic-dark
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export HOMEBREW_DIR
-
+# Homebrew
 # For non-standard Homebrew installation as required due to no root access
 # Also set HOMEBREW_DIR variable for handling non-standard installation
+export HOMEBREW_DIR
+
 if [ -d "${HOME}/homebrew" ] 2>/dev/null; then
 	export PATH=$HOME/homebrew/bin:$PATH
   HOMEBREW_DIR="$HOME/homebrew"
@@ -220,9 +212,8 @@ else
   HOMEBREW_DIR="/usr/local"
 fi
 
-export PATH=$HOMEBREW_DIR:$PATH
-
-# NVM - only if NVM is installed on machine - supress error reporting in command line
+# NVM
+# If NVM is installed on machine - supress error reporting in command line
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
@@ -249,11 +240,14 @@ load-nvmrc
 
 # Android dev env setup
 export ANDROID_HOME=$HOME/Library/Android/sdk
-export PATH=$PATH:$ANDROID_HOME/emulator:$PATH
-export PATH=$PATH:$ANDROID_HOME/tools:$PATH
-export PATH=$PATH:$ANDROID_HOME/tools/bin:$PATH
-export PATH=$PATH:$ANDROID_HOME/platform-tools:$PATH
+export PATH=$ANDROID_HOME/emulator:$PATH
+export PATH=$ANDROID_HOME/tools:$PATH
+export PATH=$ANDROID_HOME/tools/bin:$PATH
+export PATH=$ANDROID_HOME/platform-tools:$PATH
 
+# Python and pyenv
+export PATH=$HOME/Library/Python/3.9/bin:$PATH
+export PATH=$HOME/Library/Python/3.11/bin:$PATH
 alias python=/usr/bin/python3
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
@@ -264,13 +258,18 @@ if [ -d "${HOME}/homebrew/opt/ruby/bin" ]; then
   export PATH=`gem environment gemdir`/bin:$PATH
 fi
 
+# Perl for neovim
 PATH=${HOME}/perl5/bin${PATH:+:${PATH}}; export PATH;
 PERL5LIB="${HOME}/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
 PERL_LOCAL_LIB_ROOT="${HOME}/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
 PERL_MB_OPT="--install_base \"${HOME}/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=${HOME}/perl5"; export PERL_MM_OPT;
 
+# nodenv setup
 eval "$(nodenv init -)"
 
 export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
 export PUPPETEER_EXECUTABLE_PATH=`which chromium`
+
+# Set JAVA_HOME
+export JAVA_HOME=${HOME}/Library/Java/JavaVirtualMachines/azul-11.0.18/Contents/Home
