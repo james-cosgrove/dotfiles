@@ -1,6 +1,6 @@
 local status_ok, lualine = pcall(require, "lualine")
 if not status_ok then
-	return
+  return
 end
 
 local hide_in_width = function()
@@ -31,9 +31,9 @@ local branch = {
 }
 
 local filetype = {
-	"filetype",
-	icons_enabled = false,
-	icon = nil,
+  "filetype",
+  icons_enabled = false,
+  icon = nil,
 }
 
 local filename = {

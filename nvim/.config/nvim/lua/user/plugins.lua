@@ -87,7 +87,7 @@ return packer.startup(function(use)
 	use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
 	use("RRethy/vim-illuminate")
 
-	-- Telescope
+	-- Search
 	use("nvim-telescope/telescope.nvim")
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 
