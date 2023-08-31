@@ -271,5 +271,12 @@ eval "$(nodenv init -)"
 export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
 export PUPPETEER_EXECUTABLE_PATH=`which chromium`
 
-# Set JAVA_HOME
+# Java setup
 export JAVA_HOME=${HOME}/Library/Java/JavaVirtualMachines/azul-11.0.18/Contents/Home
+export PATH="$HOME/homebrew/opt/openjdk@17/bin:$PATH"
+
+# Ruby version manager
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init - zsh)"
+
+export PATH="/homebrew/opt/curl/bin:$PATH"
