@@ -114,6 +114,11 @@ _G.packer_plugins = {
     path = "/Users/jamesco/.local/share/nvim/site/pack/packer/start/friendly-snippets",
     url = "https://github.com/rafamadriz/friendly-snippets"
   },
+  ["hover.nvim"] = {
+    loaded = true,
+    path = "/Users/jamesco/.local/share/nvim/site/pack/packer/start/hover.nvim",
+    url = "https://github.com/lewis6991/hover.nvim"
+  },
   ["impatient.nvim"] = {
     loaded = true,
     path = "/Users/jamesco/.local/share/nvim/site/pack/packer/start/impatient.nvim",

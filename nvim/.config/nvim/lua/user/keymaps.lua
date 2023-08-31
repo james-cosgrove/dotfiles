@@ -49,15 +49,14 @@ keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
 -- Go to prev file
 keymap("n", "<C-b>", ":e#<CR>", opts)
 
--- Add console.log() to next line
--- keymap("n", "<C-l>", "oconsole.log()<Esc>F(a", opts)
+-- Telescope find files
+keymap("n", "<C-p>", ":Telescope find_files <CR>", opts)
 
--- Search
--- Text search
-keymap('n', '<cmd>Telescope live_grep theme=ivy<cr>', 'Find Text', opts)
+-- Add console.log() to next line
+keymap("n", "<Leader>l", "oconsole.log()<Esc>F(a", opts)
 
 -- Insert --
--- Press jk fast to exit insert mode a save 
+-- Press jk fast to exit insert mode a save
 keymap("i", "jk", "<ESC>:w<CR>", opts)
 
 -- Visual --

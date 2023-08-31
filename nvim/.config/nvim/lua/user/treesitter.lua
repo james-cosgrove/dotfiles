@@ -20,6 +20,8 @@ configs.setup({
 		"yaml",
 		"markdown",
 		"markdown_inline",
+    "kotlin",
+    "c"
 	},
 	highlight = {
 		enable = true,

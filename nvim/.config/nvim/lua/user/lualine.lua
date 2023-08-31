@@ -1,6 +1,6 @@
 local status_ok, lualine = pcall(require, "lualine")
 if not status_ok then
-  return
+	return
 end
 
 local hide_in_width = function()
@@ -21,6 +21,7 @@ local diff = {
 	"diff",
 	symbols = { added = " ", modified = " ", removed = " " }, -- changes diff symbols
 	cond = hide_in_width,
+	separator = "",
 }
 
 local branch = {
@@ -31,9 +32,9 @@ local branch = {
 }
 
 local filetype = {
-  "filetype",
-  icons_enabled = false,
-  icon = nil,
+	"filetype",
+	icons_enabled = false,
+	icon = nil,
 }
 
 local filename = {
@@ -49,9 +50,9 @@ local function location()
 	return string.format("%3d/%-2d: %-2d", line, file_length, col)
 end
 
-local tabs = {
-	"tabs",
-	mode = 1,
+local progress = {
+	"progress",
+	separator = "",
 }
 
 -- local spaces = function()
@@ -62,6 +63,7 @@ lualine.setup({
 	options = {
 		theme = "auto",
 		component_separators = { left = "", right = "" },
+		section_separators = { left = "", right = "" },
 		disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline" },
 	},
 	sections = {
@@ -70,15 +72,7 @@ lualine.setup({
 		lualine_c = { filename },
 		lualine_x = { filetype },
 		lualine_y = { "encoding" },
-		lualine_z = { "progress", location },
-	},
-	tabline = {
-		lualine_a = { tabs },
-		lualine_b = {},
-		lualine_c = {},
-		lualine_x = {},
-		lualine_y = {},
-		lualine_z = {},
+		lualine_z = { progress, location },
 	},
 	extensions = {},
 })

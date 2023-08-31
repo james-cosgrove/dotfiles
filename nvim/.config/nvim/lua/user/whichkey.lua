@@ -89,9 +89,16 @@ local mappings = {
 	["q"] = { "<cmd>q!<CR>", "Quit" },
 	["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
 	["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
-	["f"] = { "<cmd>Telescope find_files<cr>", "Find Files" },
-	["F"] = { "<cmd>Telescope grep_string<cr>", "Find Current Word" },
-	["g"] = { "<cmd>Telescope live_grep<cr>", "Find Text" },
+	["f"] = { "<cmd>Telescope live_grep<cr>", "Find Text" },
+	["F"] = { "<cmd>Telescope grep_string<cr>", "Find Matches" },
+	["d"] = {
+		"<cmd>lua vim.diagnostic.open_float()<cr>",
+		"Line Diagnostics",
+	},
+	["D"] = {
+		"<cmd>lua require('telescope.builtin').diagnostics(require('telescope.themes').get_dropdown{previewer = false, bufnr = 0})<cr>",
+		"Document Diagnostics",
+	},
 
 	p = {
 		name = "Packer",
@@ -125,17 +132,17 @@ local mappings = {
 	--   },
 	-- },
 
-	l = {
+	L = {
 		name = "LSP",
 		a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
-		d = {
-			"<cmd>Telescope diagnostics bufnr=0<cr>",
-			"Document Diagnostics",
-		},
-		w = {
-			"<cmd>Telescope diagnostics<cr>",
-			"Workspace Diagnostics",
-		},
+		-- d = {
+		-- 	"<cmd>lua require('telescope.builtin').diagnostics(require('telescope.themes').get_dropdown{previewer = false})<cr>",
+		-- 	"Document Diagnostics",
+		-- },
+		-- w = {
+		-- 	"<cmd>Telescope diagnostics<cr>",
+		-- 	"Workspace Diagnostics",
+		-- },
 		f = { "<cmd>lua vim.lsp.buf.format({ async = true })<cr>", "Format" },
 		i = { "<cmd>LspInfo<cr>", "Info" },
 		I = { "<cmd>LspInstallInfo<cr>", "Installer Info" },

@@ -43,15 +43,10 @@ return packer.startup(function(use)
 	use("wbthomason/packer.nvim") -- Have packer manage itself
 	use("nvim-lua/plenary.nvim") -- Useful lua functions used by lots of plugins
 	use("windwp/nvim-autopairs") -- Autopairs, integrates with both cmp and treesitter
-	-- use "numToStr/Comment.nvim"
-	-- use "JoosepAlviste/nvim-ts-context-commentstring"
 	use("kyazdani42/nvim-web-devicons")
 	use("kyazdani42/nvim-tree.lua")
-	-- use "ryanoasis/vim-devicons"
-	-- use "scrooloose/nerdtree"
 	use("moll/vim-bbye")
 	use("nvim-lualine/lualine.nvim")
-	-- use "ahmedkhalf/project.nvim"
 	use("lewis6991/impatient.nvim")
 	use("goolord/alpha-nvim")
 	use("folke/which-key.nvim")
@@ -70,7 +65,6 @@ return packer.startup(function(use)
 
 	-- Cmp
 	use("hrsh7th/nvim-cmp") -- The completion plugin
-	-- use "hrsh7th/cmp-buffer" -- buffer completions
 	use("hrsh7th/cmp-path") -- path completions
 	use("saadparwaiz1/cmp_luasnip") -- snippet completions
 	use("hrsh7th/cmp-nvim-lsp")
@@ -86,6 +80,7 @@ return packer.startup(function(use)
 	use("williamboman/mason-lspconfig.nvim")
 	use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
 	use("RRethy/vim-illuminate")
+  use("lewis6991/hover.nvim")
 
 	-- Search
 	use("nvim-telescope/telescope.nvim")
