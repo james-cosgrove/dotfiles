@@ -247,16 +247,13 @@ export PATH=$ANDROID_HOME/platform-tools:$PATH
 
 # Python and pyenv
 export PATH=$HOME/Library/Python/3.9/bin:$PATH
+export PATH=$HOME/Library/Python/3.10.13/bin:$PATH
 export PATH=$HOME/Library/Python/3.11/bin:$PATH
 alias python=/usr/bin/python3
 export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
-
-if [ -d "${HOME}/homebrew/opt/ruby/bin" ]; then
-  export PATH=$HOME/homebrew/opt/ruby/bin:$PATH
-  export PATH=`gem environment gemdir`/bin:$PATH
-fi
+export PATH="$(pyenv root)/shims:${PATH}"
 
 # Perl for neovim
 PATH=${HOME}/perl5/bin${PATH:+:${PATH}}; export PATH;
@@ -265,18 +262,29 @@ PERL_LOCAL_LIB_ROOT="${HOME}/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}
 PERL_MB_OPT="--install_base \"${HOME}/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=${HOME}/perl5"; export PERL_MM_OPT;
 
-# nodenv setup
-eval "$(nodenv init -)"
+export PATH="$HOME/homebrew/opt/curl/bin:$PATH"
+export PATH="$HOME/homebrew/opt/llvm/bin:$PATH"
 
 export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
 export PUPPETEER_EXECUTABLE_PATH=`which chromium`
 
 # Java setup
-export JAVA_HOME=${HOME}/Library/Java/JavaVirtualMachines/azul-11.0.18/Contents/Home
-export PATH="$HOME/homebrew/opt/openjdk@17/bin:$PATH"
+export JAVA_HOME=${HOME}/Library/Java/JavaVirtualMachines/azul-17.0.11/Contents/Home
 
-# Ruby version manager
+# Ruby
 export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init - zsh)"
+type rbenv &>/dev/null && eval "$(rbenv init -)"
 
-export PATH="/homebrew/opt/curl/bin:$PATH"
+# Node
+eval "$(nodenv init -)"
+export NODE_BINARY=/usr/local/bin/node
+
+# Root Certs
+export NODE_EXTRA_CA_CERTS=$HOME/netskope-root-ca.pem
+export SSL_CERT_FILE=$HOME/all-cas.pem
+export REQUESTS_CA_BUNDLE=$HOME/all-cas.pem
+export AWS_CA_BUNDLE=$HOME/all-cas.pem
+
+# ASDF
+. ~/.asdf/plugins/java/set-java-home.zsh
+. /Users/jamesco/homebrew/opt/asdf/libexec/asdf.sh

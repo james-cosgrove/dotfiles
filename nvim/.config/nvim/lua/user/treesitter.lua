@@ -7,7 +7,6 @@ configs.setup({
 	ensure_installed = {
 		"vim",
 		"bash",
-		"c",
 		"javascript",
 		"json",
 		"lua",
@@ -21,7 +20,9 @@ configs.setup({
 		"markdown",
 		"markdown_inline",
     "kotlin",
-    "c"
+    "swift",
+    "objc",
+    "java"
 	},
 	highlight = {
 		enable = true,

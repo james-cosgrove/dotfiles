@@ -30,9 +30,9 @@ keymap("n", "<Esc>", ":noh<CR>", opts)
 
 -- Split resizing
 keymap("n", "<Leader>iw", "<C-w>10><CR>", opts)
-keymap("n", "<Leader>dw", "<C-w>10<<CR>", opts)
+keymap("n", "<Leader>rw", "<C-w>10<<CR>", opts)
 keymap("n", "<Leader>ih", "<C-w>10+<CR>", opts)
-keymap("n", "<Leader>dh", "<C-w>10-<CR>", opts)
+keymap("n", "<Leader>rh", "<C-w>10-<CR>", opts)
 
 -- Navigate buffers
 -- keymap("n", "<S-bn>", ":bnext<CR>", opts)

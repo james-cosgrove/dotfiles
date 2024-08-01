@@ -43,21 +43,20 @@ return packer.startup(function(use)
 	use("wbthomason/packer.nvim") -- Have packer manage itself
 	use("nvim-lua/plenary.nvim") -- Useful lua functions used by lots of plugins
 	use("windwp/nvim-autopairs") -- Autopairs, integrates with both cmp and treesitter
-	use("kyazdani42/nvim-web-devicons")
 	use("kyazdani42/nvim-tree.lua")
+	use("nvim-tree/nvim-web-devicons")
 	use("moll/vim-bbye")
 	use("nvim-lualine/lualine.nvim")
-	use("lewis6991/impatient.nvim")
 	use("goolord/alpha-nvim")
 	use("folke/which-key.nvim")
-	use("tpope/vim-commentary")
 	use({
 		"iamcco/markdown-preview.nvim",
 		run = function()
 			vim.fn["mkdp#util#install"]()
 		end,
 	})
-	use("gpanders/editorconfig.nvim")
+  use({'glepnir/nerdicons.nvim', cmd = 'NerdIcons', config = function() require('nerdicons').setup({}) end})
+  use("echasnovski/mini.icons")
 
 	-- Colorschemes
 	use("RRethy/nvim-base16")
@@ -78,9 +77,18 @@ return packer.startup(function(use)
 	use("neovim/nvim-lspconfig") -- enable LSP
 	use("williamboman/mason.nvim") -- simple to use language server installer
 	use("williamboman/mason-lspconfig.nvim")
+	-- use("nvimtools/null-ls.nvim") -- for formatters and linters
 	use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
+	-- use("nvimtools/none-ls-extras.nvim")
 	use("RRethy/vim-illuminate")
-  use("lewis6991/hover.nvim")
+  -- use("lewis6991/hover.nvim")
+  use("mfussenegger/nvim-jdtls")
+  use {
+    "folke/trouble.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+  }
+
+
 
 	-- Search
 	use("nvim-telescope/telescope.nvim")
@@ -91,7 +99,7 @@ return packer.startup(function(use)
 
 	-- Git
 	use("tpope/vim-fugitive")
-	use("airblade/vim-gitgutter")
+	use({'lewis6991/gitsigns.nvim', config = function() require('gitsigns').setup({}) end})
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

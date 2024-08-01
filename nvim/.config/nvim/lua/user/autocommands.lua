@@ -33,7 +33,7 @@ vim.cmd([[
     autocmd!
     autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
     autocmd BufLeave,FocusLost,InsertEnter * set norelativenumber
-  augroup END
+  augroup end
 
   augroup _formatonsave
     autocmd!
