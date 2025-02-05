@@ -17,12 +17,11 @@ local gitsigns = null_ls.builtins.code_actions.gitsigns.with({
 null_ls.setup({
 	debug = true,
 	sources = {
-    -- require("none-ls.diagnostics.eslint_d"),
-		formatting.prettierd.with({ extra_args = { "--double-quote insert-final-newline=true" } }),
+    require("none-ls.diagnostics.eslint_d"),
 		formatting.black.with({ extra_args = { "--fast" } }),
+    formatting.prettierd.with({ extra_args = { "--double-quote" } }),
     diagnostics.ktlint,
 		diagnostics.codespell,
-    diagnostics.eslint_d,
     gitsigns,
 	},
 })

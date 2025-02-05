@@ -2,7 +2,7 @@ local servers = {
   "lua_ls",
   "cssls",
   "html",
-  "tsserver",
+  "ts_ls",
   "pyright",
   "bashls",
   "jsonls",
@@ -10,6 +10,7 @@ local servers = {
   "vuels",
   "clangd",
   "jdtls",
+  "kotlin_language_server",
 }
 
 local settings = {

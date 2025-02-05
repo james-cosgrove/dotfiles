@@ -57,6 +57,19 @@ return packer.startup(function(use)
 	})
   use({'glepnir/nerdicons.nvim', cmd = 'NerdIcons', config = function() require('nerdicons').setup({}) end})
   use("echasnovski/mini.icons")
+  use {
+  'xbase-lab/xbase',
+    run = 'make install', -- or "make install && make free_space" (not recommended, longer build time)
+    requires = {
+      "neovim/nvim-lspconfig",
+      -- "nvim-telescope/telescope.nvim", -- optional
+      -- "nvim-lua/plenary.nvim", -- optional/requirement of telescope.nvim
+      -- "stevearc/dressing.nvim", -- optional (in case you don't use telescope but something else)
+    },
+    config = function()
+      require'xbase'.setup({})  -- see default configuration below
+    end
+}
 
 	-- Colorschemes
 	use("RRethy/nvim-base16")
@@ -77,9 +90,8 @@ return packer.startup(function(use)
 	use("neovim/nvim-lspconfig") -- enable LSP
 	use("williamboman/mason.nvim") -- simple to use language server installer
 	use("williamboman/mason-lspconfig.nvim")
-	-- use("nvimtools/null-ls.nvim") -- for formatters and linters
-	use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
-	-- use("nvimtools/none-ls-extras.nvim")
+	use("nvimtools/none-ls.nvim") -- for formatters and linters
+	use("nvimtools/none-ls-extras.nvim")
 	use("RRethy/vim-illuminate")
   -- use("lewis6991/hover.nvim")
   use("mfussenegger/nvim-jdtls")
@@ -87,8 +99,6 @@ return packer.startup(function(use)
     "folke/trouble.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
   }
-
-
 
 	-- Search
 	use("nvim-telescope/telescope.nvim")

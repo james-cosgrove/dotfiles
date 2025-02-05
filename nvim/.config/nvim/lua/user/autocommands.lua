@@ -37,6 +37,7 @@ vim.cmd([[
 
   augroup _formatonsave
     autocmd!
+    autocmd BufWritePre *.ts,*.tsx,*.js,*.jsx set eol
     autocmd BufWritePre *.ts,*.tsx,*.js,*.jsx lua vim.lsp.buf.format()
   augroup end
 
