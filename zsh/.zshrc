@@ -204,6 +204,7 @@ base16_classic-dark
 # For non-standard Homebrew installation as required due to no root access
 # Also set HOMEBREW_DIR variable for handling non-standard installation
 export HOMEBREW_DIR
+export HOMEBREW_CASK_OPTS="--appdir=~/Applications"
 
 if [ -d "${HOME}/homebrew" ] 2>/dev/null; then
 	export PATH=$HOME/homebrew/bin:$PATH

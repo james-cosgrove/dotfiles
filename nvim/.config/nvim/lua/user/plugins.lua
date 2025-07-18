@@ -62,8 +62,8 @@ return packer.startup(function(use)
     run = 'make install', -- or "make install && make free_space" (not recommended, longer build time)
     requires = {
       "neovim/nvim-lspconfig",
-      -- "nvim-telescope/telescope.nvim", -- optional
-      -- "nvim-lua/plenary.nvim", -- optional/requirement of telescope.nvim
+      "nvim-telescope/telescope.nvim", -- optional
+      "nvim-lua/plenary.nvim", -- optional/requirement of telescope.nvim
       -- "stevearc/dressing.nvim", -- optional (in case you don't use telescope but something else)
     },
     config = function()
@@ -83,7 +83,7 @@ return packer.startup(function(use)
 	use("hrsh7th/cmp-nvim-lua")
 
 	-- Snippets
-	use("L3MON4D3/LuaSnip") --snippet engine
+  use { "L3MON4D3/LuaSnip", run = "make install_jsregexp" } --snippet engine
 	use("rafamadriz/friendly-snippets") -- a bunch of snippets to use
 
 	-- LSP
@@ -93,7 +93,7 @@ return packer.startup(function(use)
 	use("nvimtools/none-ls.nvim") -- for formatters and linters
 	use("nvimtools/none-ls-extras.nvim")
 	use("RRethy/vim-illuminate")
-  -- use("lewis6991/hover.nvim")
+  use("lewis6991/hover.nvim")
   use("mfussenegger/nvim-jdtls")
   use {
     "folke/trouble.nvim",
