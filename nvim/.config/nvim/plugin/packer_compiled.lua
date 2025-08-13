@@ -104,6 +104,22 @@ _G.packer_plugins = {
     path = "/Users/jamesco/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
+  ["codecompanion.nvim"] = {
+    config = { "\27LJ\2\n;\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\18codecompanion\frequire\0" },
+    loaded = true,
+    path = "/Users/jamesco/.local/share/nvim/site/pack/packer/start/codecompanion.nvim",
+    url = "https://github.com/olimorris/codecompanion.nvim"
+  },
+  ["copilot.vim"] = {
+    loaded = true,
+    path = "/Users/jamesco/.local/share/nvim/site/pack/packer/start/copilot.vim",
+    url = "https://github.com/github/copilot.vim"
+  },
+  ["fidget.nvim"] = {
+    loaded = true,
+    path = "/Users/jamesco/.local/share/nvim/site/pack/packer/start/fidget.nvim",
+    url = "https://github.com/j-hui/fidget.nvim"
+  },
   ["friendly-snippets"] = {
     loaded = true,
     path = "/Users/jamesco/.local/share/nvim/site/pack/packer/start/friendly-snippets",
@@ -184,11 +200,6 @@ _G.packer_plugins = {
     path = "/Users/jamesco/.local/share/nvim/site/pack/packer/start/nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
   },
-  ["nvim-jdtls"] = {
-    loaded = true,
-    path = "/Users/jamesco/.local/share/nvim/site/pack/packer/start/nvim-jdtls",
-    url = "https://github.com/mfussenegger/nvim-jdtls"
-  },
   ["nvim-lspconfig"] = {
     loaded = true,
     path = "/Users/jamesco/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
@@ -267,6 +278,10 @@ time([[Defining packer_plugins]], false)
 time([[Config for xbase]], true)
 try_loadstring("\27LJ\2\n7\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\nxbase\frequire\0", "config", "xbase")
 time([[Config for xbase]], false)
+-- Config for: codecompanion.nvim
+time([[Config for codecompanion.nvim]], true)
+try_loadstring("\27LJ\2\n;\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\18codecompanion\frequire\0", "config", "codecompanion.nvim")
+time([[Config for codecompanion.nvim]], false)
 -- Config for: gitsigns.nvim
 time([[Config for gitsigns.nvim]], true)
 try_loadstring("\27LJ\2\n:\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\rgitsigns\frequire\0", "config", "gitsigns.nvim")

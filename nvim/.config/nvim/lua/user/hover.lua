@@ -12,7 +12,7 @@ hover.setup {
     -- require('hover.providers.gh_user')
     -- require('hover.providers.jira')
     require('hover.providers.man')
-    require('hover.providers.dictionary')
+    -- require('hover.providers.dictionary')
   end,
   preview_opts = {
     border = 'double',
@@ -26,5 +26,5 @@ hover.setup {
 -- Setup keymaps
 vim.keymap.set("n", "K", require("hover").hover, {desc = "hover.nvim"})
 vim.keymap.set("n", "gK", require("hover").hover_select, {desc = "hover.nvim (select)"})
-vim.keymap.set("n", "hp", function() require("hover").hover_switch("previous") end, {desc = "hover.nvim (previous source)"})
-vim.keymap.set("n", "hn", function() require("hover").hover_switch("next") end, {desc = "hover.nvim (next source)"})
+vim.keymap.set("n", "Hn", function() require("hover").hover_switch("previous") end, {desc = "hover.nvim (previous source)"})
+vim.keymap.set("n", "Hn", function() require("hover").hover_switch("next") end, {desc = "hover.nvim (next source)"})

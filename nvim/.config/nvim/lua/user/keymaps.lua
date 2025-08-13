@@ -29,10 +29,10 @@ keymap("n", "<S-l>", "<C-w>l", opts)
 keymap("n", "<Esc>", ":noh<CR>", opts)
 
 -- Split resizing
-keymap("n", "<Leader>iw", "<C-w>10><CR>", opts)
-keymap("n", "<Leader>rw", "<C-w>10<<CR>", opts)
-keymap("n", "<Leader>ih", "<C-w>10+<CR>", opts)
-keymap("n", "<Leader>rh", "<C-w>10-<CR>", opts)
+-- keymap("n", "<Leader>iw", "<C-w>10><CR>", opts)
+-- keymap("n", "<Leader>rw", "<C-w>10<<CR>", opts)
+-- keymap("n", "<Leader>ih", "<C-w>10+<CR>", opts)
+-- keymap("n", "<Leader>rh", "<C-w>10-<CR>", opts)
 
 -- Navigate buffers
 keymap("n", "<S-l>", ":bnext<CR>", opts)
@@ -71,3 +71,11 @@ keymap("v", "p", '"_dP', opts)
 -- Move text up and down
 keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
+
+-- Remap copilot accept command
+keymap("i", "ok", 'copilot#Accept("\\<CR>")', {
+  expr = true,
+  replace_keycodes = false
+})
+vim.g.copilot_no_tab_map = true
+

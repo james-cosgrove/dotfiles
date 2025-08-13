@@ -91,6 +91,7 @@ telescope.setup({
 })
 
 telescope.load_extension("fzf")
+telescope.load_extension("fidget")
 
 Open_Buffers = function()
     builtin.buffers {
