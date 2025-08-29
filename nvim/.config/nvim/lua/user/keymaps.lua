@@ -10,6 +10,10 @@ keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- Disable Copilot tab mapping
+vim.g.copilot_no_tab_map = true
+
+
 -- Modes
 --   normal_mode = "n",
 --   insert_mode = "i",
@@ -77,5 +81,13 @@ keymap("i", "ok", 'copilot#Accept("\\<CR>")', {
   expr = true,
   replace_keycodes = false
 })
-vim.g.copilot_no_tab_map = true
 
+-- For the vibes
+keymap({ "n", "v" }, "<C-a>", "<cmd>CodeCompanionActions<cr>", opts)
+keymap({ "n", "v" }, "<LocalLeader>a", "<cmd>CodeCompanionChat Toggle<cr>", opts)
+keymap("v", "ga", "<cmd>CodeCompanionChat Add<cr>", opts)
+
+-- Expand 'cc' into 'CodeCompanion' in the command line
+vim.cmd([[cab cc CodeCompanion]])
+
+keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", term_opts)
