@@ -249,7 +249,6 @@ export REQUESTS_CA_BUNDLE=$HOME/all-cas.pem
 export AWS_CA_BUNDLE=$HOME/all-cas.pem
 
 # ASDF
-<<<<<<< Updated upstream
 asdf() {
   . ~/.asdf/plugins/java/set-java-home.zsh
   . ${HOMEBREW_DIR}/opt/asdf/libexec/asdf.sh
