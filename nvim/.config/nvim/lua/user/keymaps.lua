@@ -77,7 +77,7 @@ keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 
 -- Remap copilot accept command
-keymap("i", "ok", 'copilot#Accept("\\<CR>")', {
+keymap("i", "kj", 'copilot#Accept("\\<CR>")', {
   expr = true,
   replace_keycodes = false
 })

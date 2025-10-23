@@ -24,7 +24,7 @@ hover.setup {
 }
 
 -- Setup keymaps
-vim.keymap.set("n", "K", require("hover").hover, {desc = "hover.nvim"})
-vim.keymap.set("n", "gK", require("hover").hover_select, {desc = "hover.nvim (select)"})
-vim.keymap.set("n", "Hn", function() require("hover").hover_switch("previous") end, {desc = "hover.nvim (previous source)"})
-vim.keymap.set("n", "Hn", function() require("hover").hover_switch("next") end, {desc = "hover.nvim (next source)"})
+vim.keymap.set("n", "K",function()  require("hover").open() end, {desc = "hover.nvim"})
+vim.keymap.set("n", "gK", function() require("hover").enter() end, {desc = "hover.nvim (enter)"})
+vim.keymap.set("n", "Hb", function() require("hover").switch("previous") end, {desc = "hover.nvim (previous source)"})
+vim.keymap.set("n", "Hn", function() require("hover").switch("next") end, {desc = "hover.nvim (next source)"})

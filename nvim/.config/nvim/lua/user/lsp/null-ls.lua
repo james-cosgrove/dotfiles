@@ -19,7 +19,7 @@ null_ls.setup({
 	sources = {
     require("none-ls.diagnostics.eslint_d"),
 		formatting.black.with({ extra_args = { "--fast" } }),
-    formatting.prettierd.with({ extra_args = { "--double-quote" } }),
+    formatting.prettierd,
 		diagnostics.codespell,
 		diagnostics.clangd,
     gitsigns,
