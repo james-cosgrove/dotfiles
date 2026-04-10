@@ -89,7 +89,13 @@ return packer.startup(function(use)
 	use("neovim/nvim-lspconfig") -- enable LSP
 	use("williamboman/mason.nvim") -- simple to use language server installer
 	use("williamboman/mason-lspconfig.nvim")
-	use("nvimtools/none-ls.nvim") -- for formatters and linters
+	use("williamboman/mason-null-ls.nvim")
+	use({
+    "nvimtools/none-ls.nvim",
+    requires = {
+      "nvim-lua/plenary.nvim",
+    }
+  }) -- for formatters and linters
 	use("nvimtools/none-ls-extras.nvim")
 	use("RRethy/vim-illuminate")
   use("lewis6991/hover.nvim")
@@ -113,12 +119,27 @@ return packer.startup(function(use)
 	use("tpope/vim-fugitive")
 	use({'lewis6991/gitsigns.nvim', config = function() require('gitsigns').setup({}) end})
 
-  -- GitHub Co-Pilot
+  -- GitHub Copilot
   use("github/copilot.vim")
   use({
     "olimorris/codecompanion.nvim",
     config = function()
-      require("codecompanion").setup()
+      require("codecompanion").setup({
+        interactions = {
+          chat = {
+            adapter = "copilot",
+          },
+        },
+        adapders = {
+          copilot_acp = function()
+            return require("codecompanion.adapters").extend("copilot", {
+              commands = {
+                default = { "copilot" },
+              },
+            })
+          end,
+        }
+      })
     end,
     requires = {
       "nvim-lua/plenary.nvim",

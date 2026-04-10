@@ -49,8 +49,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/Users/jamesco/.cache/nvim/packer_hererocks/2.1.1760617492/share/lua/5.1/?.lua;/Users/jamesco/.cache/nvim/packer_hererocks/2.1.1760617492/share/lua/5.1/?/init.lua;/Users/jamesco/.cache/nvim/packer_hererocks/2.1.1760617492/lib/luarocks/rocks-5.1/?.lua;/Users/jamesco/.cache/nvim/packer_hererocks/2.1.1760617492/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/Users/jamesco/.cache/nvim/packer_hererocks/2.1.1760617492/lib/lua/5.1/?.so"
+local package_path_str = "/Users/jamesco/.cache/nvim/packer_hererocks/2.1.1767980792/share/lua/5.1/?.lua;/Users/jamesco/.cache/nvim/packer_hererocks/2.1.1767980792/share/lua/5.1/?/init.lua;/Users/jamesco/.cache/nvim/packer_hererocks/2.1.1767980792/lib/luarocks/rocks-5.1/?.lua;/Users/jamesco/.cache/nvim/packer_hererocks/2.1.1767980792/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/Users/jamesco/.cache/nvim/packer_hererocks/2.1.1767980792/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -111,7 +111,7 @@ _G.packer_plugins = {
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
   ["codecompanion.nvim"] = {
-    config = { "\27LJ\2\n;\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\18codecompanion\frequire\0" },
+    config = { "\27LJ\2\n—\1\0\0\6\0\t\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0'\2\3\0005\3\a\0005\4\5\0005\5\4\0=\5\6\4=\4\b\3D\0\3\0\rcommands\1\0\1\rcommands\0\fdefault\1\0\1\fdefault\0\1\2\0\0\fcopilot\fcopilot\vextend\27codecompanion.adapters\frequireÎ\1\1\0\5\0\f\0\0156\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\6\0005\3\4\0005\4\3\0=\4\5\3=\3\a\0025\3\t\0003\4\b\0=\4\n\3=\3\v\2B\0\2\1K\0\1\0\radapders\16copilot_acp\1\0\1\16copilot_acp\0\0\17interactions\1\0\2\17interactions\0\radapders\0\tchat\1\0\1\tchat\0\1\0\1\fadapter\fcopilot\nsetup\18codecompanion\frequire\0" },
     loaded = true,
     path = "/Users/jamesco/.local/share/nvim/site/pack/packer/start/codecompanion.nvim",
     url = "https://github.com/olimorris/codecompanion.nvim"
@@ -161,6 +161,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/jamesco/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
     url = "https://github.com/williamboman/mason-lspconfig.nvim"
+  },
+  ["mason-null-ls.nvim"] = {
+    loaded = true,
+    path = "/Users/jamesco/.local/share/nvim/site/pack/packer/start/mason-null-ls.nvim",
+    url = "https://github.com/williamboman/mason-null-ls.nvim"
   },
   ["mason.nvim"] = {
     loaded = true,
@@ -280,22 +285,22 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: gitsigns.nvim
-time([[Config for gitsigns.nvim]], true)
-try_loadstring("\27LJ\2\n:\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\rgitsigns\frequire\0", "config", "gitsigns.nvim")
-time([[Config for gitsigns.nvim]], false)
+-- Config for: codecompanion.nvim
+time([[Config for codecompanion.nvim]], true)
+try_loadstring("\27LJ\2\n—\1\0\0\6\0\t\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0'\2\3\0005\3\a\0005\4\5\0005\5\4\0=\5\6\4=\4\b\3D\0\3\0\rcommands\1\0\1\rcommands\0\fdefault\1\0\1\fdefault\0\1\2\0\0\fcopilot\fcopilot\vextend\27codecompanion.adapters\frequireÎ\1\1\0\5\0\f\0\0156\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\6\0005\3\4\0005\4\3\0=\4\5\3=\3\a\0025\3\t\0003\4\b\0=\4\n\3=\3\v\2B\0\2\1K\0\1\0\radapders\16copilot_acp\1\0\1\16copilot_acp\0\0\17interactions\1\0\2\17interactions\0\radapders\0\tchat\1\0\1\tchat\0\1\0\1\fadapter\fcopilot\nsetup\18codecompanion\frequire\0", "config", "codecompanion.nvim")
+time([[Config for codecompanion.nvim]], false)
 -- Config for: bufferin.nvim
 time([[Config for bufferin.nvim]], true)
 try_loadstring("\27LJ\2\n6\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\rbufferin\frequire\0", "config", "bufferin.nvim")
 time([[Config for bufferin.nvim]], false)
+-- Config for: gitsigns.nvim
+time([[Config for gitsigns.nvim]], true)
+try_loadstring("\27LJ\2\n:\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\rgitsigns\frequire\0", "config", "gitsigns.nvim")
+time([[Config for gitsigns.nvim]], false)
 -- Config for: xbase
 time([[Config for xbase]], true)
 try_loadstring("\27LJ\2\n7\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\nxbase\frequire\0", "config", "xbase")
 time([[Config for xbase]], false)
--- Config for: codecompanion.nvim
-time([[Config for codecompanion.nvim]], true)
-try_loadstring("\27LJ\2\n;\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\18codecompanion\frequire\0", "config", "codecompanion.nvim")
-time([[Config for codecompanion.nvim]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)

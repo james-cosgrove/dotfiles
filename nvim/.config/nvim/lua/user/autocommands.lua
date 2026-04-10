@@ -1,3 +1,9 @@
+local format = function()
+  vim.lsp.buf.format {
+    filter = function(client) return client.name ~= "ts_ls" end
+  }
+end
+
 vim.cmd([[
   augroup _general_settings
     autocmd!
@@ -35,17 +41,16 @@ vim.cmd([[
     autocmd BufLeave,FocusLost,InsertEnter * set norelativenumber
   augroup end
 
-  augroup _formatonsave
-    autocmd!
-    autocmd BufWritePre *.ts,*.tsx,*.js,*.jsx set eol
-    autocmd BufWritePre *.ts,*.tsx,*.js,*.jsx lua vim.lsp.buf.format()
-  augroup end
-
   augroup _explorer
     autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') |
       \ :NvimTreeOpen :cd argv()[0] | endif
   augroup end
 ]])
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = { "*.ts", "*.tsx", "*.js", "*.jsx" },
+  callback = format,
+})
 
 -- augroup _diagnostics
 -- autocmd!

@@ -1,7 +1,8 @@
 local status, mason_lspconfig = pcall(require, "mason-lspconfig")
 local mason_status, mason = pcall(require, "mason")
+local mason_null_ls_status, mason_null_ls = pcall(require, "mason-null-ls")
 
-if not status or not mason_status then
+if not status or not mason_status or not mason_null_ls_status then
     return
 end
 
@@ -31,5 +32,13 @@ mason_lspconfig.setup({
     "eslint",
     "kotlin_language_server",
     "jsonls",
+  },
+})
+
+mason_null_ls.setup({
+  automatic_installation = true,
+  ensure_installed = {
+    "prettierd",
+    "prettier",
   },
 })

@@ -14,11 +14,14 @@
 -- Configure Kotlin Language Server
 return {
     -- on_attach = on_attach,
+    command = { "kotlin-lsp" },
     settings = {
-        kotlin = {
+        kotlin_language_server = {
             runtime = {
-                jdkPath = "/Users/jamesco/Library/Java/JavaVirtualMachines/azul-17.0.11/Contents/Home",
-            }
+                jdkPath = "/Users/jamesco/homebrew/bin/kotlin-lsp"
+            },
+            cmd = { "kotlin-lsp" },
+            filetypes = {"kotlin", "kt", "kts"},
         },
     },
 }
