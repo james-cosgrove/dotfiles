@@ -18,7 +18,7 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 zstyle ':omz:plugins:nvm' lazy yes
-plugins=(git zsh-autosuggestions nvm asdf)
+plugins=(git zsh-autosuggestions nvm)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -118,13 +118,14 @@ alias gadd="git add -A .; e_success 'Files added to be committed'"              
 alias gacm="git add -A .; e_success 'Files added to be committed'; git commit -m"           # Stage files then commit them with message
 alias glog="git log --pretty='%C(bold blue)<%an>%Creset %Cgreen(%ad) %Cred%h%Creset -%C(auto)%d%Creset %s' --date=format:'%a %d-%m-%Y %H:%M:%S'"
 alias glol="git log --oneline"
-alias timesheet="git log --pretty='%C(bold blue)<%an>%Creset %Cgreen(%ad) %Cred%h%Creset -%C(auto)%d%Creset %s' --date=format:'%a %d-%m-%Y %H:%M:%S' --author=james"
+alias timesheet="git log --pretty='%C(bold blue)<%an>%Creset %Cgreen(%ad) %Cred%h%Creset -%C(auto)%d%Creset %s' --date=format:'%a %d-%m-%Y %H:%M:%S' --author=cosgrove"
 
 # Utils
 alias pythonstart="source venv/bin/activate && ./run.sh"
 alias list-android="emulator -list-avds"
 alias reverse="adb reverse tcp:8081 tcp:8081"
 alias sleep="pmset sleepnow"
+alias python="/usr/bin/python3"
 
 # saml2aws Aliases
 alias samlmartechdev='saml2aws login --role=arn:aws:iam::031822892316:role/cloud-saml-martech-dev-developer --profile dev --disable-sessions --force --skip-prompt && export AWS_PROFILE=dev'
@@ -156,4 +157,66 @@ base16_classic-dark
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# Homebrew
+# For non-standard Homebrew installation as required due to no root access
+# Also set HOMEBREW_DIR variable for handling non-standard installation
+export HOMEBREW_DIR
+export HOMEBREW_CASK_OPTS="--appdir=~/Applications"
+
+if [ -d "${HOME}/homebrew" ] 2>/dev/null; then
+	export PATH=$HOME/homebrew/bin:$PATH
+  HOMEBREW_DIR="$HOME/homebrew"
+else
+  HOMEBREW_DIR="/usr/local"
+fi
+
+# Python and pyenv
+export PATH=$HOME/Library/Python/3.9/bin:$PATH
+export PATH=$HOME/Library/Python/3.10.13/bin:$PATH
+export PATH=$HOME/Library/Python/3.11/bin:$PATH
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+export PATH="$(pyenv root)/shims:${PATH}"
+
+# Node
+eval "$(nodenv init -)"
+export NODE_BINARY=/usr/local/bin/node
+
+# ASDF
+. ~/.asdf/plugins/java/set-java-home.zsh
+. ${HOMEBREW_DIR}/opt/asdf/libexec/asdf.sh
+
 # zprof
+export SSL_CERT_FILE=/Users/jamesco/all-cas.pem
+
+# Ruby
+export PATH="$HOME/.rbenv/bin:$PATH"
+type rbenv &>/dev/null && eval "$(rbenv init -)"
+
+# NVM
+# If NVM is installed on machine - suppress error reporting in command line
+export NVM_LAZY_LOAD=true
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+autoload -U add-zsh-hook
+load-nvmrc() {
+  local nvmrc_path="$(nvm_find_nvmrc)"
+
+  if [ -n "$nvmrc_path" ]; then
+    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+
+    if [ "$nvmrc_node_version" = "N/A" ]; then
+      nvm install
+    elif [ "$nvmrc_node_version" != "$(nvm version)" ]; then
+      nvm use
+    fi
+  elif [ -n "$(PWD=$OLDPWD nvm_find_nvmrc)" ] && [ "$(nvm version)" != "$(nvm version default)" ]; then
+    echo "Reverting to nvm default version"
+    nvm use default
+  fi
+}
+add-zsh-hook chpwd load-nvmrc
+load-nvmrc
