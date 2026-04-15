@@ -31,8 +31,6 @@ local options = {
 	scrolloff = 8, -- minimal number of screen lines to keep above and below the cursor
 	sidescrolloff = 8, -- minimal number of screen columns either side of cursor if wrap is `false`
 	guifont = "monospace:h17", -- the font used in graphical neovim applications
-  fixendofline = false, -- do not add a newline at the end of file
-  fixeol = false, -- do not add a newline at the end of file
 }
 
 for k, v in pairs(options) do

@@ -1,5 +1,7 @@
 local format = function()
   vim.lsp.buf.format {
+    async = false,
+    timeout_ms = 3000,
     filter = function(client) return client.name ~= "ts_ls" end
   }
 end
@@ -50,6 +52,23 @@ vim.cmd([[
 vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = { "*.ts", "*.tsx", "*.js", "*.jsx" },
   callback = format,
+})
+
+-- Show indicator on last line to visualize final newline presence
+vim.api.nvim_create_autocmd({"BufEnter", "BufWritePost", "TextChanged", "TextChangedI"}, {
+  callback = function()
+    local ns = vim.api.nvim_create_namespace("final_newline_indicator")
+    vim.api.nvim_buf_clear_namespace(0, ns, 0, -1)
+    
+    local line_count = vim.api.nvim_buf_line_count(0)
+    if vim.bo.endofline then
+      -- Show indicator that file has proper final newline
+      vim.api.nvim_buf_set_extmark(0, ns, line_count - 1, 0, {
+        virt_text = {{" $", "Comment"}},
+        virt_text_pos = "eol",
+      })
+    end
+  end,
 })
 
 -- augroup _diagnostics
