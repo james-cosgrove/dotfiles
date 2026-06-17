@@ -1,5 +1,7 @@
-local format = function()
+local format = function(evt)
   vim.lsp.buf.format({
+    bufnr = evt.buf,
+    timeout_ms = 3000,
     filter = function(client)
       return client.name ~= "ts_ls"
     end

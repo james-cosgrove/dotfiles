@@ -179,14 +179,6 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 export PATH="$(pyenv root)/shims:${PATH}"
 
-# Node
-eval "$(nodenv init -)"
-export NODE_BINARY=/usr/local/bin/node
-
-# ASDF
-. ~/.asdf/plugins/java/set-java-home.zsh
-. ${HOMEBREW_DIR}/opt/asdf/libexec/asdf.sh
-
 # zprof
 export SSL_CERT_FILE=/Users/jamesco/all-cas.pem
 
@@ -218,5 +210,30 @@ load-nvmrc() {
     nvm use default
   fi
 }
+
+# load-nvmrc() {
+#     local nvmrc_path
+#     # nvm_find_up is an internal nvm function to locate .nvmrc in the current or parent directories
+#     nvmrc_path="$(nvm_find_up .nvmrc)"
+#
+#     if [ -n "$nvmrc_path" ]; then
+#         local nvmrc_node_version
+#         nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+#
+#         if [ "$nvmrc_node_version" = "N/A" ]; then
+#             nvm install "$(cat "${nvmrc_path}")"
+#         elif [ "$nvmrc_node_version" != "$(nvm version)" ]; then
+#             nvm use
+#         fi
+#     elif [ "$(nvm version)" != "$(nvm version default)" ]; then
+#         echo "Reverting to nvm default version"
+#         nvm use default
+#     fi
+# }
+
 add-zsh-hook chpwd load-nvmrc
-load-nvmrc
+
+# nodenv
+export PATH="$HOME/.nodenv/bin:$PATH"
+eval "$(nodenv init -)"
+export NODE_BINARY=/usr/local/bin/node
