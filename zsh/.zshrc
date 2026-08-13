@@ -233,7 +233,11 @@ load-nvmrc() {
 
 add-zsh-hook chpwd load-nvmrc
 
-# nodenv
+# Node
 export PATH="$HOME/.nodenv/bin:$PATH"
 eval "$(nodenv init -)"
 export NODE_BINARY=/usr/local/bin/node
+export SSL_CERT_FILE=/Users/jamesco/all-cas.pem
+export NODE_EXTRA_CA_CERTS=$HOME/netskope-root-ca.pem
+export REACT_NATIVE_PACKAGER_HOSTNAME=127.0.0.1
+export PATH="$HOME/.local/bin:$PATH"
